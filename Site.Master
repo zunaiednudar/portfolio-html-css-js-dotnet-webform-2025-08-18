@@ -4,15 +4,53 @@
 
 <html>
 <head runat="server">
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <!--Google Fonts-->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="anonymous">
+    <link href="https://fonts.googleapis.com/css2?family=Josefin+Sans:ital,wght@0,100..700;1,100..700&display=swap" rel="stylesheet">
+
+    <!--Web app icon-->
+    <link rel="icon" href="images/icons8-person-100.png" type="image/png">
+
+    <!--Icons (Font Awesome)-->
+    <script src="https://kit.fontawesome.com/115498d46a.js" crossorigin="anonymous"></script>
+
+    <!--CSS-->
+    <link rel="stylesheet" href="styles/site.css" type="text/css" />
+
+    <!--JavaScript-->
+    <script src="scripts/site.js"></script>
+
     <title></title>
+
+    <!--This is where each page will inject its unique content-->
     <asp:ContentPlaceHolder ID="head" runat="server">
     </asp:ContentPlaceHolder>
 </head>
-<body>
-    <form id="form1" runat="server">
-        <div>
-            <asp:ContentPlaceHolder ID="ContentPlaceHolder1" runat="server">
-            </asp:ContentPlaceHolder>
+<body class="site">
+    <form id="siteForm" runat="server">
+        <div class="site-form-div">
+            <!--Header-->
+            <header class="site-form-div-header">
+                <h1 class="site-form-div-header-h1-name">Md. Zunaied Nudar</h1>
+                <nav class="site-form-div-header-nav">
+                    <ul class="site-form-div-header-nav-ul">
+                        <li class="site-form-div-header-nav-ul-li"><a href="Home.aspx">Home</a></li>
+                        <li class="site-form-div-header-nav-ul-li"><a href="Qualifications.aspx">Qualifications</a></li>
+                        <li class="site-form-div-header-nav-ul-li"><a href="Projects.aspx">Projects</a></li>
+                    </ul>
+                </nav>
+            </header>
+
+            <!--Home-->
+            <main class="site-form-div-main">
+                <asp:ContentPlaceHolder ID="home" runat="server">
+                </asp:ContentPlaceHolder>
+            </main>
+            <!--Footer-->
         </div>
     </form>
 </body>
