@@ -1,0 +1,33 @@
+MyPortfolio/                  <-- Root of the project
+│
+├── app_data/                 <-- Database files (optional, for .mdf)
+│
+├── images/                   <-- All portfolio images
+│   ├── profile.jpg
+│   └── project1.png
+│
+├── scripts/                  <-- All JavaScript files
+│   ├── main.js               <-- Custom JS (animations, sliders, form validation)
+│   └── libs/                 <-- External JS libraries (optional)
+│       └── jquery.min.js
+│
+├── styles/                   <-- All CSS files
+│   ├── site.css              <-- Global styling (layout, nav, footer)
+│   └── pages.css             <-- Page-specific styles (optional)
+│
+├── Site.Master               <-- Master page (common layout: header, nav, footer)
+├── Site.Master.cs            <-- CodeBehind for Master page (optional logic)
+│
+├── Default.aspx              <-- Home page
+├── Default.aspx.cs           <-- CodeBehind
+│
+├── About.aspx                <-- About Me page
+├── About.aspx.cs             <-- CodeBehind
+│
+├── Projects.aspx             <-- Portfolio projects page
+├── Projects.aspx.cs          <-- CodeBehind
+│
+├── Contact.aspx              <-- Contact form page
+├── Contact.aspx.cs           <-- CodeBehind
+│
+└── Web.config                <-- ASP.NET configuration (DB, authentication)
