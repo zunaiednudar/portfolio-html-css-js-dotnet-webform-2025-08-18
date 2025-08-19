@@ -114,3 +114,17 @@
     width: 150%;
     transform: translateX(-200px);
 }
+
+.home-section-left {
+    width: 60%;
+    border: 1px solid black;
+}
+
+.home-section-right {
+    width: 40%;
+    border: 1px solid black;
+}
+
+.home-section-right-img {
+    width: 600px;
+}

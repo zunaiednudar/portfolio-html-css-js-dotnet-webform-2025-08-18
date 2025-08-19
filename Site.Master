@@ -4,7 +4,29 @@
 
 <html>
 <head runat="server">
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <!--Google Fonts-->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="anonymous">
+    <link href="https://fonts.googleapis.com/css2?family=Josefin+Sans:ital,wght@0,100..700;1,100..700&display=swap" rel="stylesheet">
+
+    <!--Web app icon-->
+    <link rel="icon" href="images/icons8-person-100.png" type="image/png">
+
+    <!--Icons (Font Awesome)-->
+    <script src="https://kit.fontawesome.com/115498d46a.js" crossorigin="anonymous"></script>
+
+    <!--CSS-->
+    <link rel="stylesheet" href="styles/site.css" type="text/css" />
+
+    <!--JavaScript-->
+    <script src="scripts/site.js"></script>
+
     <title></title>
+
+    <!--This is where each page will inject its unique content-->
     <asp:ContentPlaceHolder ID="head" runat="server">
     </asp:ContentPlaceHolder>
 </head>
