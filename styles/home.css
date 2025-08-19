@@ -1,16 +1,3 @@
 ﻿body {
 }
 
-.home-section-left {
-    width: 60%;
-    border: 1px solid black;
-}
-
-.home-section-right {
-    width: 40%;
-    border: 1px solid black;
-}
-
-.home-section-right-img {
-    width: 600px;
-}

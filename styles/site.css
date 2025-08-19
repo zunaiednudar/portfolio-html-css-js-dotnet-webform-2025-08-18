@@ -1,25 +1,26 @@
 ﻿:root {
     /*FONTS*/
     --font-stack: Josefin Sans, Helvetica, sans-serif, 'Courier New', monospace;
-    --font-sz-lg: 2.0em;
-    --font-sz-md: 1.5em;
-    --font-sz-sm: 1em;
+    --font-sz-lg: 2.2rem;
+    --font-sz-md: 1.8rem;
+    --font-sz-sm: 1.4rem;
     /*COLORS*/
-    --color-bg-primary: #3CE1C8;
-    /*--color-bg-secondary: #ED2DAD;
-    --color-bg-tertiary: #FACDEE;
-    --color-bg-quaternary: #FFE5EB;*/
+    --color-bg-primary: #08A38B;
+    --color-bg-secondary: #FFFFFF;
+    --color-bg-tertiary: #076657;
+    --color-bg-quaternary: #043F36;
     --color-font: rgba(255, 255, 255, 0.8);
+    --color-font-2: rgba(0, 0, 0, 0.8);
     --color-hover: rgba(255, 255, 255, 0.9);
     --color-focus: rgba(255, 255, 255, 1);
     --color-active: rgba(255, 255, 255, 1);
     /*--color-visited: rgba(0, 0, 0, 1);*/
-    --color-disabled: #F3B2DD;
+    --color-disabled: rgba(255, 255, 255, 0.6);
     /*OTHERS*/
     --radius: 10px;
     --margin: 10px;
     --padding: 10px;
-    --box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+    --box-shadow: 0 0 5px rgba(0, 0, 0, 0.5);
 }
 
 *, *::before, *::after {
@@ -36,6 +37,7 @@
     margin-inline: auto;
     padding-top: 50px;
     font-family: var(--font-stack), serif;
+    font-size: var(--font-sz-sm);
     color: var(--color-font);
     background-color: var(--color-bg-primary);
 }
@@ -45,14 +47,25 @@
 /*HEADER*/
 
 .site-form-div-header {
-    margin-bottom: 50px;
+    margin-bottom: 2.5rem;
 }
 
-.site-form-div-header-h1-name {}
+.site-form-div-header-h1-name {
+    margin-bottom: 2.5rem;
+}
 
-.site-form-div-header-nav {}
+.site-form-div-header-nav {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    align-items: center;
+    font-size: var(--font-sz-md);
+    /*border: 1px solid black;*/
+}
 
 .site-form-div-header-nav-ul {
+    width: 50%;
     list-style-type: none;
     padding-left: 0;
     margin: 0;
@@ -63,11 +76,27 @@
     align-items: center;
 }
 
+.site-form-div-header-nav-button-download-cv {
+    padding: 10px;
+    background-color: var(--color-bg-secondary);
+    color: var(--color-font-2);
+    font-family: var(--font-stack), serif;
+    font-size: var(--font-sz-sm);
+    border: none;
+    border-radius: var(--radius);
+    cursor: pointer;
+    box-shadow: var(--box-shadow);
+}
+
+.site-form-div-header-nav-button-download-cv:hover {
+    background-color: var(--color-bg-tertiary);
+}
+
 .site-form-div-header-nav-ul-li {}
 
 .site-form-div-header-nav-ul-li > a {
     text-decoration: none;
-    color: var(--color-font);
+    color: var(--color-disabled);
 }
 
 .site-form-div-header-nav-ul-li > a:hover {
