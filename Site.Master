@@ -8,11 +8,28 @@
     <asp:ContentPlaceHolder ID="head" runat="server">
     </asp:ContentPlaceHolder>
 </head>
-<body>
-    <form id="form1" runat="server">
-        <div>
-            <asp:ContentPlaceHolder ID="ContentPlaceHolder1" runat="server">
-            </asp:ContentPlaceHolder>
+<body class="site">
+    <form id="siteForm" runat="server">
+        <div class="site-form-div">
+            <!--Header-->
+            <header class="site-form-div-header">
+                <h1 class="site-form-div-header-h1-name">Md. Zunaied Nudar</h1>
+                <nav class="site-form-div-header-nav">
+                    <ul class="site-form-div-header-nav-ul">
+                        <li class="site-form-div-header-nav-ul-li"><a href="Home.aspx">Home</a></li>
+                        <li class="site-form-div-header-nav-ul-li"><a href="Qualifications.aspx">Qualifications</a></li>
+                        <li class="site-form-div-header-nav-ul-li"><a href="Projects.aspx">Projects</a></li>
+                    </ul>
+                    <button class="site-form-div-header-nav-button-download-cv">Download CV</button>
+                </nav>
+            </header>
+
+            <!--Home-->
+            <main class="site-form-div-main">
+                <asp:ContentPlaceHolder ID="home" runat="server">
+                </asp:ContentPlaceHolder>
+            </main>
+            <!--Footer-->
         </div>
     </form>
 </body>
