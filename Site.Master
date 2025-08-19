@@ -45,10 +45,14 @@
                     <button class="site-form-div-header-nav-button-download-cv">Download CV</button>
                 </nav>
             </header>
-
             <!--Home-->
             <main class="site-form-div-main">
                 <asp:ContentPlaceHolder ID="home" runat="server">
+                </asp:ContentPlaceHolder>
+            </main>
+            <!--Projects-->
+            <main class="site-form-div-main">
+                <asp:ContentPlaceHolder ID="projects" runat="server">
                 </asp:ContentPlaceHolder>
             </main>
             <!--Footer-->
