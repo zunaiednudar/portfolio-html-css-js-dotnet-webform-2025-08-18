@@ -42,6 +42,7 @@
                         <li class="site-form-div-header-nav-ul-li"><a href="Qualifications.aspx">Qualifications</a></li>
                         <li class="site-form-div-header-nav-ul-li"><a href="Projects.aspx">Projects</a></li>
                     </ul>
+                    <button class="site-form-div-header-nav-button-download-cv">Download CV</button>
                 </nav>
             </header>
             <!--Home-->
