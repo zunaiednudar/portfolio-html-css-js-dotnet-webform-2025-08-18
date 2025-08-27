@@ -26,16 +26,27 @@
 }
 
 .home-section-left-aside-sidebar {
-    width: 20rem;
+    width: 25rem;
     margin-top: 20px;
     font-size: var(--font-sz-sm);
     /*border: 10px solid var(--color-bg-quaternary);*/
 }
 
 .home-section-left-aside-sidebar-nav {
+
+    height: 100%;
+    padding: 10px 0;
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    align-items: flex-start;
+    gap: 50px;
+    /*border: 1px solid black;*/
 }
 
 .home-section-left-aside-sidebar-nav-ul {
+    width: 100%;
     list-style-type: none;
     padding-left: 0;
     margin: 0;
@@ -43,12 +54,12 @@
     flex-direction: column;
     flex-wrap: nowrap;
     justify-content: space-evenly;
-    align-items: center;
+    align-items: flex-start;
     gap: 10px;
-    /*border: 1px solid black;*/
+/*    border: 1px solid black;*/
 }
 
-.home-section-left-aside-sidebar-nav-ul-li {
+.home-section-left-aside-sidebar-nav-ul-li-tab {
     width: 100%;
     text-align: left;
     display: flex;
@@ -61,7 +72,8 @@
     /*border: 1px solid black;*/
 }
 
-.home-section-left-aside-sidebar-nav-ul-li > hr {
+
+.home-section-left-aside-sidebar-nav-ul-li-tab > hr {
     flex: 0 1 auto;
     width: 10px;
     height: 1px;
@@ -70,28 +82,29 @@
     border: 1px solid var(--color-disabled);
 }
 
-.home-section-left-aside-sidebar-nav-ul-li:hover {
+
+.home-section-left-aside-sidebar-nav-ul-li-tab:hover {
     justify-content: flex-end;    
 }
 
-.home-section-left-aside-sidebar-nav-ul-li:hover > hr {
+.home-section-left-aside-sidebar-nav-ul-li-tab:hover > hr {
     flex-grow: 1;
     border-color: var(--color-hover);
 }
 
-.home-section-left-aside-sidebar-nav-ul-li:hover > a {
+.home-section-left-aside-sidebar-nav-ul-li-tab:hover > a {
     color: var(--color-hover);
 }
 
-.home-section-left-aside-sidebar-nav-ul-li:focus {
+.home-section-left-aside-sidebar-nav-ul-li-tab:focus {
     color: var(--color-focus);
 }
 
-.home-section-left-aside-sidebar-nav-ul-li:active {
+.home-section-left-aside-sidebar-nav-ul-li-tab:active {
     color: var(--color-active);
 }
 
-.home-section-left-aside-sidebar-nav-ul-li > a {
+.home-section-left-aside-sidebar-nav-ul-li-tab > a {
     margin-right: auto;
     text-decoration: none;
     color: var(--color-disabled);
@@ -112,6 +125,7 @@
 
 .home-section-right-img {
     width: 150%;
+    border-radius: 10px;
     transform: translateX(-200px);
 }
 

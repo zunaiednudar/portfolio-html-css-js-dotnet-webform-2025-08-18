@@ -1,0 +1,25 @@
+﻿body {}
+
+.blogs-section {
+    padding: 2rem;
+}
+
+.blogs-section-ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.blogs-section-ul-li {
+    border-bottom: 1px solid #DDD;
+    padding: 1rem 0;
+}
+
+.blogs-section-ul-li > h3 > a {
+    color: #333;
+    text-decoration: none;
+}
+
+.blogs-section-ul-li > h3 > a:hover {
+    text-decoration: underline;
+}

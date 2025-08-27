@@ -7,55 +7,64 @@
     <section class="projects-section">
         <!--Project 01-->
         <div class="project-card">
-            <img src="images/zunaied-01.jpg" alt="Portfolio Website Screenshot" />
-            <h3>Portfolio</h3>
-            <p>
-                A responsive portfolio website showcasing my skills and projects.
+            <img src="images/ss-portfolio-resized.png" alt="Portfolio Website Screenshot" />
+            <div>
+                <h3>Portfolio</h3>
+                <p>
+                    A responsive portfolio website showcasing my skills and projects.
                 Built with HTML, CSS, and JavaScript. Implements smooth scrolling,
                 responsive grid, and interactive hover effects.
-            </p>
-            <p><strong>Tech:</strong> HTML, CSS, JS</p>
-            <a href="https://your-live-demo-link.com" target="_blank">Live Demo</a>
-            <a href="https://github.com/yourusername/project1" target="_blank">GitHub</a>
+                </p>
+                <p><strong>Tech:</strong> HTML, CSS, JS</p>
+                <a href="https://your-live-demo-link.com" target="_blank">Live Demo</a>
+                <a href="https://github.com/yourusername/project1" target="_blank">GitHub</a>
+            </div>
         </div>
         <!--Project 02-->
         <div class="project-card">
             <img src="images/zunaied-01.jpg" alt="Portfolio Website Screenshot" />
-            <h3>Portfolio</h3>
-            <p>
-                A responsive portfolio website showcasing my skills and projects.
-                Built with HTML, CSS, and JavaScript. Implements smooth scrolling,
-                responsive grid, and interactive hover effects.
-            </p>
-            <p><strong>Tech:</strong> HTML, CSS, JS</p>
-            <a href="https://your-live-demo-link.com" target="_blank">Live Demo</a>
-            <a href="https://github.com/yourusername/project1" target="_blank">GitHub</a>
+            <div>
+                <h3>Portfolio</h3>
+                <p>
+                    A responsive portfolio website showcasing my skills and projects.
+    Built with HTML, CSS, and JavaScript. Implements smooth scrolling,
+    responsive grid, and interactive hover effects.
+                </p>
+                <p><strong>Tech:</strong> HTML, CSS, JS</p>
+                <a href="https://your-live-demo-link.com" target="_blank">Live Demo</a>
+                <a href="https://github.com/yourusername/project1" target="_blank">GitHub</a>
+            </div>
         </div>
         <!--Project 03-->
         <div class="project-card">
             <img src="images/zunaied-01.jpg" alt="Portfolio Website Screenshot" />
-            <h3>Portfolio</h3>
-            <p>
-                A responsive portfolio website showcasing my skills and projects.
-                Built with HTML, CSS, and JavaScript. Implements smooth scrolling,
-                responsive grid, and interactive hover effects.
-            </p>
-            <p><strong>Tech:</strong> HTML, CSS, JS</p>
-            <a href="https://your-live-demo-link.com" target="_blank">Live Demo</a>
-            <a href="https://github.com/yourusername/project1" target="_blank">GitHub</a>
+            <div>
+                <h3>Portfolio</h3>
+                <p>
+                    A responsive portfolio website showcasing my skills and projects.
+    Built with HTML, CSS, and JavaScript. Implements smooth scrolling,
+    responsive grid, and interactive hover effects.
+                </p>
+                <p><strong>Tech:</strong> HTML, CSS, JS</p>
+                <a href="https://your-live-demo-link.com" target="_blank">Live Demo</a>
+                <a href="https://github.com/yourusername/project1" target="_blank">GitHub</a>
+            </div>
         </div>
         <!--Project 04-->
         <div class="project-card">
             <img src="images/zunaied-01.jpg" alt="Portfolio Website Screenshot" />
-            <h3>Portfolio</h3>
-            <p>
-                A responsive portfolio website showcasing my skills and projects.
-                Built with HTML, CSS, and JavaScript. Implements smooth scrolling,
-                responsive grid, and interactive hover effects.
-            </p>
-            <p><strong>Tech:</strong> HTML, CSS, JS</p>
-            <a href="https://your-live-demo-link.com" target="_blank">Live Demo</a>
-            <a href="https://github.com/yourusername/project1" target="_blank">GitHub</a>
+
+            <div>
+                <h3>Portfolio</h3>
+                <p>
+                    A responsive portfolio website showcasing my skills and projects.
+    Built with HTML, CSS, and JavaScript. Implements smooth scrolling,
+    responsive grid, and interactive hover effects.
+                </p>
+                <p><strong>Tech:</strong> HTML, CSS, JS</p>
+                <a href="https://your-live-demo-link.com" target="_blank">Live Demo</a>
+                <a href="https://github.com/yourusername/project1" target="_blank">GitHub</a>
+            </div>
         </div>
     </section>
 </asp:Content>

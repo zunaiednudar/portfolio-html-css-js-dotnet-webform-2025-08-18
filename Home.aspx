@@ -3,7 +3,7 @@
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
     <link rel="stylesheet" href="styles/home.css" type="text/css" />
 </asp:Content>
-<asp:Content ID="mainContent" ContentPlaceHolderID="home" runat="server">
+<asp:Content ID="Content2" ContentPlaceHolderID="home" runat="server">
     <section class="home-section-left">
         <!--Main body-->
         <article class="home-section-left-article-about">
@@ -28,16 +28,34 @@
         <aside class="home-section-left-aside-sidebar">
             <nav class="home-section-left-aside-sidebar-nav">
                 <ul class="home-section-left-aside-sidebar-nav-ul">
-                    <li class="home-section-left-aside-sidebar-nav-ul-li">
+                    <li class="home-section-left-aside-sidebar-nav-ul-li-tab">
                         <hr />
                         <a href="#">About</a></li>
-                    <li class="home-section-left-aside-sidebar-nav-ul-li">
+                    <li class="home-section-left-aside-sidebar-nav-ul-li-tab">
                         <hr />
                         <a href="#">Skills</a></li>
-                    <li class="home-section-left-aside-sidebar-nav-ul-li">
+                    <li class="home-section-left-aside-sidebar-nav-ul-li-tab">
+                        <hr />
+                        <a href="#">Education</a></li>
+                    <li class="home-section-left-aside-sidebar-nav-ul-li-tab">
                         <hr />
                         <a href="#">Contact</a></li>
                 </ul>
+                <ul class="home-section-left-aside-sidebar-nav-ul">
+                    <li class="home-section-left-aside-sidebar-nav-ul-li-icon">
+                        <i class="fa-brands fa-github"></i>
+                    </li>
+                    <li class="home-section-left-aside-sidebar-nav-ul-li-icon">
+                        <i class="fa-brands fa-linkedin"></i>
+                    </li>
+                    <li class="home-section-left-aside-sidebar-nav-ul-li-icon">
+                        <i class="fa-brands fa-square-facebook"></i>
+                    </li>
+                    <li class="home-section-left-aside-sidebar-nav-ul-li-icon">
+                        <i class="fa-brands fa-instagram"></i>
+                    </li>
+                </ul>
+
             </nav>
         </aside>
     </section>

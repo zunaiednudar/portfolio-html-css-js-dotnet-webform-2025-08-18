@@ -39,10 +39,17 @@
                 <nav class="site-form-div-header-nav">
                     <ul class="site-form-div-header-nav-ul">
                         <li class="site-form-div-header-nav-ul-li"><a href="Home.aspx">Home</a></li>
-                        <li class="site-form-div-header-nav-ul-li"><a href="Qualifications.aspx">Qualifications</a></li>
+                        <!--<li class="site-form-div-header-nav-ul-li"><a href="Qualifications.aspx">Qualifications</a></li>-->
                         <li class="site-form-div-header-nav-ul-li"><a href="Projects.aspx">Projects</a></li>
+                        <li class="site-form-div-header-nav-ul-li"><a href="Blogs.aspx">Blogs</a></li>
                     </ul>
-                    <button class="site-form-div-header-nav-button-download-cv">Download CV</button>
+                    <div class="site-form-div-header-nav-div">
+                        <button class="site-form-div-header-nav-button-download-cv">Download CV</button>
+                        <button class="site-form-div-header-nav-button-toggle-view-mode">  
+                            <i class="fa-solid fa-sun"></i>
+                            <i class="fa-solid fa-moon"></i>
+                        </button>
+                    </div>
                 </nav>
             </header>
             <!--Home-->
@@ -53,6 +60,11 @@
             <!--Projects-->
             <main class="site-form-div-main">
                 <asp:ContentPlaceHolder ID="projects" runat="server">
+                </asp:ContentPlaceHolder>
+            </main>
+            <!--Blogs-->
+            <main class="site-form-div-main">
+                <asp:ContentPlaceHolder ID="blogs" runat="server">
                 </asp:ContentPlaceHolder>
             </main>
             <!--Footer-->
