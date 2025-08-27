@@ -78,6 +78,7 @@
     <Content Include="scripts\site.js" />
     <Content Include="styles\blogs.css" />
     <Content Include="styles\home.css" />
+    <Content Include="styles\projects.css" />
     <Content Include="styles\site.css" />
     <Content Include="Web.config" />
   </ItemGroup>

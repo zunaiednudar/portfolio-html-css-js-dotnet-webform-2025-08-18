@@ -73,7 +73,7 @@
     align-items: center;
     gap: 50px;
     font-size: var(--font-sz-md);
-/*    border: 1px solid black;*/
+/*  border: 1px solid black;*/
 }
 
 .site-form-div-header-nav-ul {
@@ -116,6 +116,22 @@
     font-size: var(--font-sz-lg);
     color: #FFFFFF;
     cursor: pointer;
+}
+
+.site-form-div-header-nav-button-download-cv:hover {
+    background-color: var(--color-bg-tertiary);
+}
+
+.site-form-div-header-nav-button-download-cv {
+    padding: 10px;
+    background-color: var(--color-bg-secondary);
+    color: var(--color-font-2);
+    font-family: var(--font-stack), serif;
+    font-size: var(--font-sz-sm);
+    border: none;
+    border-radius: var(--radius);
+    cursor: pointer;
+    box-shadow: var(--box-shadow);
 }
 
 .site-form-div-header-nav-button-download-cv:hover {
