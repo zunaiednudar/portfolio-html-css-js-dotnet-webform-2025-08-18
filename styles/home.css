@@ -170,11 +170,13 @@
 }
 
 .home-section-right-img {
+    display: none;
     width: 150%;
     border-radius: 10px;
     /*Initial opacity set to 0, updated to 1 in JavaScript*/
     opacity: 0;
-    transform: translateX(-100px);
+    /*Initial position set to translateX(0), updated to translateX(-200px) in JavaScript*/
+    transform: translateX(0);
     transition: transform 0.5s ease, opacity 0.5s ease-in;
 }
 

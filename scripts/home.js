@@ -42,8 +42,10 @@ function fetchArticles() {
             }
             let homeSectionLeftArticles = document.querySelector(".home-section-left-div-articles"); // Container for articles
             let homeSectionLeftSidebarTabs = document.querySelector("#home-sidebar-ul-tabs");
+            let homeSectionRight = document.querySelector(".home-section-right"); // Container for right section images
             homeSectionLeftArticles.innerHTML = ""; // Clear existing articles
             homeSectionLeftSidebarTabs.innerHTML = ""; // Clear existing tabs
+            homeSectionRight.innerHTML = ""; // Clear existing images
             articles.forEach(article => {
                 // Set the container: <article>
                 let _article = document.createElement('article');
@@ -66,6 +68,7 @@ function fetchArticles() {
                 let _article_li_tab = document.createElement('li');
                 _article_li_tab.classList.add('home-section-left-aside-sidebar-nav-ul-li-tab');
                 _article_li_tab.setAttribute('data-target', `article-${article["ArticleName"]}`);
+                _article_li_tab.setAttribute('data-image', `image-${article["ArticleName"]}`);
                 // Set and append horizontal line before tab: <hr>
                 _article_li_tab.appendChild(document.createElement('hr'));
                 // Set and append the tab link: <a>
@@ -75,6 +78,13 @@ function fetchArticles() {
                 _article_li_tab.appendChild(_article_li_tab_a_title);
                 // Append the tab to the homeSectionLeftSidebarTabs
                 homeSectionLeftSidebarTabs.appendChild(_article_li_tab);
+                // Set the corresponding image: <img>
+                let _article_img = document.createElement('img');
+                _article_img.classList.add('home-section-right-img');
+                _article_img.id = `image-${article["ArticleName"]}`;
+                _article_img.src = article["ImagePath"];
+                // Append the image to the homeSectionRight
+                homeSectionRight.appendChild(_article_img);
             });
             // Detached tabs
             // Set the contact container: <article>
@@ -87,6 +97,7 @@ function fetchArticles() {
             let _article_li_tab = document.createElement('li');
             _article_li_tab.classList.add('home-section-left-aside-sidebar-nav-ul-li-tab');
             _article_li_tab.setAttribute('data-target', "article-contact");
+            _article_li_tab.setAttribute('data-image', "image-contact");
             // Set and append horizontal line before contact tab: <hr>
             _article_li_tab.appendChild(document.createElement('hr'));
             // Set and append the contact tab link: <a>
@@ -96,15 +107,27 @@ function fetchArticles() {
             _article_li_tab.appendChild(_article_li_tab_a_title);
             // Append the contact tab to the homeSectionLeftSidebarTabs
             homeSectionLeftSidebarTabs.appendChild(_article_li_tab);
+            // Set the contact image: <img>
+            let _article_img = document.createElement('img');
+            _article_img.classList.add('home-section-right-img');
+            _article_img.id = "image-contact";
+            _article_img.src = "images/logo-contact.jpg";
+            // Append the image to the homeSectionRight
+            homeSectionRight.appendChild(_article_img);
             // Show the first article by default
             document.querySelector(`#article-${articles[0]["ArticleName"]}`).style.display = "block";
             // Select the first sidebar tab by default
             document.querySelector(`[data-target="article-${articles[0]["ArticleName"]}"]`).classList.add("selected");
+            // Show the first image by default
+            document.querySelector(`#image-${articles[0]["ArticleName"]}`).style.display = "block";
             setTimeout(() => {
                 // Animate the opacity of the first article
                 document.querySelector(`#article-${articles[0]["ArticleName"]}`).style.opacity = '1';
                 // Animate the horizontal line of the first sidebar tab
                 document.querySelector(`[data-target="article-${articles[0]["ArticleName"]}"]`).querySelector("hr").style.flexGrow = '1';
+                // Animate the position and opacity of the first image
+                document.querySelector(`#image-${articles[0]["ArticleName"]}`).style.transform = 'translateX(-200px)';
+                document.querySelector(`#image-${articles[0]["ArticleName"]}`).style.opacity = '1';
             }, 50);
             // Add click event listeners to sidebar tabs
             const sideBarLiTabs = document.querySelectorAll(".home-section-left-aside-sidebar-nav-ul-li-tab");
@@ -133,16 +156,26 @@ function fetchArticles() {
                     // Animate the horizontal line of the selected tab
                     tab.querySelector("hr").style.flexGrow = '1';
                     const targetId = tab.getAttribute("data-target");
+                    const targetImageId = tab.getAttribute("data-image");
                     const targetArticle = document.querySelector(`#${targetId}`);
+                    const targetImage = document.querySelector(`#${targetImageId}`);
                     if (!targetArticle) return; // Safety check
                     document.querySelectorAll("article").forEach(article => {
                         article.style.display = "none";
                         article.style.opacity = '0';
                     });
+                    document.querySelectorAll("img").forEach(img => {
+                        img.style.display = "none";
+                        img.style.transform = 'translateX(0)';
+                        img.style.opacity = '0';
+                    });
                     targetArticle.style.display = "block";
+                    targetImage.style.display = "block";
                     // Animate the opacity of the displayed article
                     setTimeout(() => {
                         targetArticle.style.opacity = '1';
+                        targetImage.style.transform = 'translateX(-200px)';
+                        targetImage.style.opacity = '1';
                     }, 30);
                 });
             });

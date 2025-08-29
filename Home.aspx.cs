@@ -21,7 +21,7 @@ namespace portfolio_html_css_js_dotnet_webform_2025_08_18
             string connectionString = ConfigurationManager.ConnectionStrings["PortfolioDbConnection"].ConnectionString;
             DataTable dataTable = new DataTable();
             SqlConnection connection = new SqlConnection(connectionString);
-            string query = "SELECT ID, ArticleName, ArticleTitle, ArticleDescription, CreatedAt, LastUpdatedAt FROM PortfolioHomeArticles";
+            string query = "SELECT ID, ArticleName, ArticleTitle, ArticleDescription, CreatedAt, LastUpdatedAt, ImagePath FROM PortfolioHomeArticles";
             SqlCommand command = new SqlCommand(query, connection);
             SqlDataAdapter dataAdapter = new SqlDataAdapter(command);
             try

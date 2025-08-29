@@ -57,18 +57,15 @@
             <nav class="home-section-left-aside-sidebar-nav">
                 <ul class="home-section-left-aside-sidebar-nav-ul" id="home-sidebar-ul-tabs">
                     <!--
-                    <li class="home-section-left-aside-sidebar-nav-ul-li-tab selected" data-target="article-about">
+                    <li class="home-section-left-aside-sidebar-nav-ul-li-tab selected" data-target="article-about" data-image="image-about">
                         <hr />
                         <a href="#">About</a></li>
-                    <li class="home-section-left-aside-sidebar-nav-ul-li-tab" data-target="article-skills">
+                    <li class="home-section-left-aside-sidebar-nav-ul-li-tab" data-target="article-skills" data-image="image-skills">
                         <hr />
                         <a href="#">Skills</a></li>
-                    <li class="home-section-left-aside-sidebar-nav-ul-li-tab" data-target="article-education">
+                    <li class="home-section-left-aside-sidebar-nav-ul-li-tab" data-target="article-education" data-image="image-education">
                         <hr />
                         <a href="#">Education</a></li>
-                    <li class="home-section-left-aside-sidebar-nav-ul-li-tab" data-target="article-contact">
-                        <hr />
-                        <a href="#">Contact</a></li>
                 -->
                     <li class="home-section-left-aside-sidebar-nav-ul-li-tab" data-target="article-contact">
                         <hr />
@@ -92,7 +89,8 @@
         </aside>
     </section>
     <section class="home-section-right">
-        <img class="home-section-right-img" src="images/zunaied-01.jpg" />
+        <!--<img class="home-section-right-img" id="image-about" src="images/zunaied-01.jpg" />-->
+        <!--<img class="home-section-right-img" id="image-skills" src="images/logo-skills.jpg" />-->
     </section>
     <!--JavaScript-->
     <script src="scripts/home.js"></script>
