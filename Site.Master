@@ -67,6 +67,8 @@
                 <asp:ContentPlaceHolder ID="blogs" runat="server">
                 </asp:ContentPlaceHolder>
             </main>
+            <!--JavaScript-->
+            <script src="scripts/site.js"></script>
             <!--Footer-->
         </div>
     </form>

@@ -75,6 +75,7 @@
     <Content Include="images\zunaied-01.jpg" />
     <Content Include="Projects.aspx" />
     <Content Include="Qualifications.aspx" />
+    <Content Include="scripts\home.js" />
     <Content Include="scripts\site.js" />
     <Content Include="styles\blogs.css" />
     <Content Include="styles\home.css" />
