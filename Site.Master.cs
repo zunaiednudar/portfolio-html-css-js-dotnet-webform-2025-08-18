@@ -13,5 +13,13 @@ namespace portfolio_html_css_js_dotnet_webform_2025_08_18
         {
 
         }
+        protected void DownloadCV_Click(object sender, EventArgs e)
+        {
+            string filePath = Server.MapPath("~/documents/cv-md-zunaied-nudar.pdf");
+            Response.ContentType = "application/pdf";
+            Response.AppendHeader("Content-Disposition", "attachment; filename=cv.pdf");
+            Response.TransmitFile(filePath);
+            Response.End();
+        }
     }
 }

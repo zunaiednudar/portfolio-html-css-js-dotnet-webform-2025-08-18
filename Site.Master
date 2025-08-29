@@ -44,8 +44,13 @@
                         <li class="site-form-div-header-nav-ul-li"><a href="Blogs.aspx">Blogs</a></li>
                     </ul>
                     <div class="site-form-div-header-nav-div">
-                        <button class="site-form-div-header-nav-button-download-cv">Download CV</button>
-                        <button class="site-form-div-header-nav-button-toggle-view-mode">  
+                        <asp:Button
+                            ID="btnDownloadCV"
+                            runat="server"
+                            Text="Download CV"
+                            OnClick="DownloadCV_Click" />
+                        <!--<button class="site-form-div-header-nav-button-download-cv">Download CV</button>-->
+                        <button class="site-form-div-header-nav-button-toggle-view-mode">
                             <i class="fa-solid fa-sun"></i>
                             <i class="fa-solid fa-moon"></i>
                         </button>

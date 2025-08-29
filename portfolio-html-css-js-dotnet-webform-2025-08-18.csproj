@@ -122,6 +122,7 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
+    <Content Include="documents\cv-md-zunaied-nudar.pdf" />
     <None Include="packages.config" />
     <Content Include="Site.Master" />
     <None Include="Web.Debug.config">

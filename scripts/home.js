@@ -12,6 +12,7 @@ window.addEventListener('load', () => {
     });
     setTimeout(() => {
         homeSectionRightImg.style.transform = 'translateX(-200px)';
+        homeSectionRightImg.style.opacity = '1';
     }, 50);
 });
 function capitalizeFirstLetter(string) {

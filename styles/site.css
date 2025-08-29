@@ -70,6 +70,7 @@
 
 .site-form-div-header-h1-name {
     margin-bottom: 2.5rem;
+    cursor: default;
 }
 
 .site-form-div-header-nav {
@@ -107,53 +108,12 @@
     gap: 50px;
 }
 
-.site-form-div-header-nav-button-download-cv {
-    padding: 10px;
-    background-color: var(--color-bg-tertiary);
-    color: var(--color-font);
-    font-family: var(--font-stack), serif;
-    font-size: var(--font-sz-sm);
-    border: none;
-    border-radius: var(--radius);
-    cursor: pointer;
-    box-shadow: var(--box-shadow);
-}
-
-    .site-form-div-header-nav-button-download-cv:hover {
-        background-color: var(--color-bg-quaternary);
-    }
-
-    .site-form-div-header-nav-button-download-cv:focus {
-        background-color: var(--color-bg-secondary);
-    }
-
-.site-form-div-header-nav-button-toggle-view-mode {
-    border: none;
-    background-color: var(--color-bg-primary);
-}
-
-    .site-form-div-header-nav-button-toggle-view-mode > i.fa-sun {
-        width: 50px;
-        display: none;
-        font-size: var(--font-sz-lg);
-        color: var(--color-sun);
-        cursor: pointer;
-    }
-
-    .site-form-div-header-nav-button-toggle-view-mode > i.fa-moon {
-        width: 50px;
-        display: none;
-        font-size: var(--font-sz-lg);
-        color: var(--color-moon);
-        cursor: pointer;
-    }
-
-.site-form-div-header-nav-ul-li {
-}
+.site-form-div-header-nav-ul-li {}
 
     .site-form-div-header-nav-ul-li > a {
         text-decoration: none;
         color: var(--color-disabled);
+        transition: color 0.5s ease;       
     }
 
         .site-form-div-header-nav-ul-li > a:hover {
@@ -167,6 +127,80 @@
         .site-form-div-header-nav-ul-li > a:active {
             color: var(--color-active);
         }
+
+
+/*.site-form-div-header-nav-button-download-cv {
+    padding: 10px;
+    background-color: var(--color-bg-tertiary);
+    color: var(--color-font);
+    font-family: var(--font-stack), serif;
+    font-size: var(--font-sz-sm);
+    border: none;
+    border-radius: var(--radius);
+    cursor: pointer;
+    box-shadow: var(--box-shadow);
+    transition: all 0.3s ease;
+}
+
+    .site-form-div-header-nav-button-download-cv:hover {
+        background-color: var(--color-bg-quaternary);
+    }
+
+    .site-form-div-header-nav-button-download-cv:focus {
+        background-color: var(--color-bg-secondary);
+    }*/
+
+#btnDownloadCV {
+    padding: 10px;
+    background-color: var(--color-bg-tertiary);
+    color: var(--color-font);
+    font-family: var(--font-stack), serif;
+    font-size: var(--font-sz-sm);
+    border: none;
+    border-radius: var(--radius);
+    cursor: pointer;
+    box-shadow: var(--box-shadow);
+    transition: all 0.3s ease;
+}
+
+    #btnDownloadCV:hover {
+        background-color: var(--color-bg-quaternary);
+    }
+
+    #btnDownloadCV:focus {
+        background-color: var(--color-bg-secondary);
+    }
+
+.site-form-div-header-nav-button-toggle-view-mode {
+    border: none;
+    background-color: var(--color-bg-primary);
+}
+
+    .site-form-div-header-nav-button-toggle-view-mode > i.fa-sun {
+        width: 50px;
+        display: none;
+        font-size: var(--font-sz-lg);
+        color: var(--color-disabled);
+        cursor: pointer;
+        transition: all 1s ease;
+    }
+
+    .site-form-div-header-nav-button-toggle-view-mode > i.fa-moon {
+        width: 50px;
+        display: none;
+        font-size: var(--font-sz-lg);
+        color: var(--color-disabled);
+        cursor: pointer;
+        transition: all 1s ease;
+    }
+
+    .site-form-div-header-nav-button-toggle-view-mode > i.fa-sun:hover {
+        color: var(--color-sun);
+    }
+
+    .site-form-div-header-nav-button-toggle-view-mode > i.fa-moon:hover {
+        color: var(--color-moon);
+    }
 
 /*MAIN*/
 
