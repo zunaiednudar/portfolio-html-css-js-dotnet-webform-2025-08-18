@@ -5,7 +5,9 @@
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="home" runat="server">
     <section class="home-section-left">
-        <!--Main body-->
+        <div class="home-section-left-div-articles">
+            <!--Main body-->
+            <!--
         <article class="home-section-left-article" id="article-about">
             <h2 class="home-section-left-h2-about-me">About Me</h2>
             <br />
@@ -48,10 +50,13 @@
         problems, learning new technologies, and sharing knowledge with others.
             </p>
         </article>
+        -->
+        </div>
         <!--Side navigation bar-->
         <aside class="home-section-left-aside-sidebar">
             <nav class="home-section-left-aside-sidebar-nav">
-                <ul class="home-section-left-aside-sidebar-nav-ul">
+                <ul class="home-section-left-aside-sidebar-nav-ul" id="home-sidebar-ul-tabs">
+                    <!--
                     <li class="home-section-left-aside-sidebar-nav-ul-li-tab selected" data-target="article-about">
                         <hr />
                         <a href="#">About</a></li>
@@ -64,8 +69,12 @@
                     <li class="home-section-left-aside-sidebar-nav-ul-li-tab" data-target="article-contact">
                         <hr />
                         <a href="#">Contact</a></li>
+                -->
+                    <li class="home-section-left-aside-sidebar-nav-ul-li-tab" data-target="article-contact">
+                        <hr />
+                        <a href="#">Contact</a></li>
                 </ul>
-                <ul class="home-section-left-aside-sidebar-nav-ul">
+                <ul class="home-section-left-aside-sidebar-nav-ul" id="home-sidebar-ul-icons">
                     <li class="home-section-left-aside-sidebar-nav-ul-li-icon" data-info="github">
                         <i class="fa-brands fa-github"></i>
                     </li>

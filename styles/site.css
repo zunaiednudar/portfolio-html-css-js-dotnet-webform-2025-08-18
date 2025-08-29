@@ -73,7 +73,7 @@
     align-items: center;
     gap: 50px;
     font-size: var(--font-sz-md);
-/*  border: 1px solid black;*/
+    /*border: 1px solid black;*/
 }
 
 .site-form-div-header-nav-ul {
