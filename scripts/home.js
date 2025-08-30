@@ -28,18 +28,19 @@ function fetchArticles() {
     })
         .then(response => response.json())
         .then(data => {
-            let articles = data.d; // Actual JSON returned by WebMethod (data.d)
-            if (typeof data.d === "string") {
-                try {
-                    articles = JSON.parse(articles); // Parse the JSON string into an object (IMPORTANT)
-                } catch (e) {
-                    console.error("Error parsing JSON:", e);
-                    return;
-                }
-            }
-            if (!Array.isArray(articles)) {
-                articles = [articles] // Ensure articles is an array
-            }
+            // let articles = data.d; // Actual JSON returned by WebMethod (data.d)
+            // if (typeof data.d === "string") {
+                // try {
+                    // articles = JSON.parse(articles); // Parse the JSON string into an object (IMPORTANT)
+                // } catch (e) {
+                    // console.error("Error parsing JSON:", e);
+                    // return;
+                // }
+            // }
+            // if (!Array.isArray(articles)) {
+                // articles = [articles] // Ensure articles is an array
+            // }
+            let articles = JSON.parse(data.d); // Parse the JSON string into an object (IMPORTANT)
             let homeSectionLeftArticles = document.querySelector(".home-section-left-div-articles"); // Container for articles
             let homeSectionLeftSidebarTabs = document.querySelector("#home-sidebar-ul-tabs");
             let homeSectionRight = document.querySelector(".home-section-right"); // Container for right section images
@@ -115,19 +116,42 @@ function fetchArticles() {
             // Append the image to the homeSectionRight
             homeSectionRight.appendChild(_article_img);
             // Show the first article by default
-            document.querySelector(`#article-${articles[0]["ArticleName"]}`).style.display = "block";
+            // document.querySelector(`#article-${articles[0]["ArticleName"]}`).style.display = "block";
             // Select the first sidebar tab by default
-            document.querySelector(`[data-target="article-${articles[0]["ArticleName"]}"]`).classList.add("selected");
+            // document.querySelector(`[data-target="article-${articles[0]["ArticleName"]}"]`).classList.add("selected");
             // Show the first image by default
-            document.querySelector(`#image-${articles[0]["ArticleName"]}`).style.display = "block";
+            // document.querySelector(`#image-${articles[0]["ArticleName"]}`).style.display = "block";
+            // SESSION IMPLEMENTATION
+            // Check session storage for previously selected tab
+            let savedTab = sessionStorage.getItem("selectedTab");
+            // If found, display that tab instead of the first one
+            let defaultTabId = savedTab ? savedTab : `article-${articles[0]["ArticleName"]}`;
+            // Get corresponding image ID
+            let defaultImageId = savedTab ? document.querySelector(`[data-target="${savedTab}"]`)?.getAttribute("data-image") : `image-${articles[0]["ArticleName"]}`;
+            // Safety check if the saved tab exists in the current articles
+            if (!document.querySelector(`#${defaultTabId}`)) {
+                defaultTabId = `article-${articles[0]["ArticleName"]}`;
+                defaultImageId = `image-${articles[0]["ArticleName"]}`;
+            }
+            // Display the default article + image
+            document.querySelector(`#${defaultTabId}`).style.display = "block";
+            document.querySelector(`[data-target="${defaultTabId}"]`).classList.add("selected");
+            document.querySelector(`#${defaultImageId}`).style.display = "block";
             setTimeout(() => {
                 // Animate the opacity of the first article
-                document.querySelector(`#article-${articles[0]["ArticleName"]}`).style.opacity = '1';
+                // document.querySelector(`#article-${articles[0]["ArticleName"]}`).style.opacity = '1';
                 // Animate the horizontal line of the first sidebar tab
-                document.querySelector(`[data-target="article-${articles[0]["ArticleName"]}"]`).querySelector("hr").style.flexGrow = '1';
+                // document.querySelector(`[data-target="article-${articles[0]["ArticleName"]}"]`).querySelector("hr").style.flexGrow = '1';
                 // Animate the position and opacity of the first image
-                document.querySelector(`#image-${articles[0]["ArticleName"]}`).style.transform = 'translateX(-200px)';
-                document.querySelector(`#image-${articles[0]["ArticleName"]}`).style.opacity = '1';
+                // document.querySelector(`#image-${articles[0]["ArticleName"]}`).style.transform = 'translateX(-200px)';
+                // document.querySelector(`#image-${articles[0]["ArticleName"]}`).style.opacity = '1';
+                // Animate the opacity of the default article
+                document.querySelector(`#${defaultTabId}`).style.opacity = '1';
+                // Animate the horizontal line of the default sidebar tab
+                document.querySelector(`[data-target="${defaultTabId}"]`).querySelector("hr").style.flexGrow = '1';
+                // Animate the position and opacity of the default image
+                document.querySelector(`#${defaultImageId}`).style.transform = "translateX(-200px)";
+                document.querySelector(`#${defaultImageId}`).style.opacity = '1';
             }, 50);
             // Add click event listeners to sidebar tabs
             const sideBarLiTabs = document.querySelectorAll(".home-section-left-aside-sidebar-nav-ul-li-tab");
@@ -144,9 +168,12 @@ function fetchArticles() {
                     }
                 });
             });
+            // SESSION STORAGE FOR SELECTED TAB
             // Click event to switch articles
             sideBarLiTabs.forEach(tab => {
                 tab.addEventListener("click", () => {
+                    // Save selected tab to session storage
+                    sessionStorage.setItem('selectedTab', tab.getAttribute('data-target'));
                     sideBarLiTabs.forEach(t => {
                         t.classList.remove("selected");
                         // Animate the horizontal line of unselected tabs
@@ -160,11 +187,11 @@ function fetchArticles() {
                     const targetArticle = document.querySelector(`#${targetId}`);
                     const targetImage = document.querySelector(`#${targetImageId}`);
                     if (!targetArticle) return; // Safety check
-                    document.querySelectorAll("article").forEach(article => {
+                    homeSectionLeftArticles.querySelectorAll("article").forEach(article => {
                         article.style.display = "none";
                         article.style.opacity = '0';
                     });
-                    document.querySelectorAll("img").forEach(img => {
+                    homeSectionRight.querySelectorAll("img").forEach(img => {
                         img.style.display = "none";
                         img.style.transform = 'translateX(-100px)';
                         img.style.opacity = '0';
@@ -183,7 +210,8 @@ function fetchArticles() {
         .catch(err => console.error(err));
 }
 // Run fetchArticles() after the entire page has fully loaded
-window.onload = fetchArticles;
+// window.onload = fetchArticles;
+window.addEventListener("load", fetchArticles);
 const sideBarLiIcons = document.querySelectorAll(".home-section-left-aside-sidebar-nav-ul-li-icon");
 sideBarLiIcons.forEach(icon => {
     icon.addEventListener("click", (event) => {
