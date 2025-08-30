@@ -18,3 +18,13 @@ window.addEventListener('load', () => {
         }
     }
 });
+window.addEventListener('message', event => {
+    // Check if the message is from the same origin
+    if (event.origin !== window.location.origin) {
+        return;
+    }
+    // Only reload the page when "themeChanged" is received
+    if (event.data === "themeChanged") {
+        location.reload(); // Reload the page to apply the new theme
+    }
+});

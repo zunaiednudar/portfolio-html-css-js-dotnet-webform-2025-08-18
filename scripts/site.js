@@ -40,9 +40,17 @@ window.addEventListener('load', () => {
         sessionStorage.setItem('nameAnimated', 'true');
     }
 });
+
 document.addEventListener("DOMContentLoaded", () => {
     let sunIcon = document.querySelector('.site-form-div-header-nav-button-toggle-view-mode .fa-sun');
     let moonIcon = document.querySelector('.site-form-div-header-nav-button-toggle-view-mode .fa-moon');
+    // Notify iframe of theme change
+    function notifyThemeChange() {
+        const iframe = document.getElementById('contactIframe');
+        // Send signal message to iframe (Contact.aspx)
+        if (!iframe) return;
+        iframe.contentWindow.postMessage("themeChanged", window.location.origin);
+    }
     function setCookie(name, value, days) {
         let expires = "";
         if (days) {
@@ -66,9 +74,13 @@ document.addEventListener("DOMContentLoaded", () => {
         if (document.documentElement.classList.contains("light")) {
             sunIcon.style.display = "none";
             moonIcon.style.display = "inline-block";
+            // Notify iframe of theme change
+            notifyThemeChange();
         } else {
-            sunIcon.style.display = "inline-block";
             moonIcon.style.display = "none";
+            sunIcon.style.display = "inline-block";
+            // Notify iframe of theme change
+            notifyThemeChange();
         }
     }
     // Load saved theme from cookies

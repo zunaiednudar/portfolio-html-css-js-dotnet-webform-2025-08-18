@@ -39,7 +39,7 @@
                             Text="Download CV"
                             OnClick="DownloadCV_Click" />
                         <!--<button class="site-form-div-header-nav-button-download-cv">Download CV</button>-->
-                        <button class="site-form-div-header-nav-button-toggle-view-mode" type="button" title="#">
+                        <button class="site-form-div-header-nav-button-toggle-view-mode" type="button" title="">
                             <i class="fa-solid fa-sun"></i>
                             <i class="fa-solid fa-moon"></i>
                         </button>

@@ -213,7 +213,7 @@
         font-size: var(--font-sz-lg);
         color: var(--color-disabled);
         cursor: pointer;
-        transition: all 1s ease;
+        transition: color 1s ease;
     }
 
     .site-form-div-header-nav-button-toggle-view-mode > i.fa-moon {
@@ -222,7 +222,7 @@
         font-size: var(--font-sz-lg);
         color: var(--color-disabled);
         cursor: pointer;
-        transition: all 1s ease;
+        transition: color 1s ease;
     }
 
     .site-form-div-header-nav-button-toggle-view-mode > i.fa-sun:hover {

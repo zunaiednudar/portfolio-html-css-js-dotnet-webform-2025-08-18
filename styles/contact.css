@@ -75,7 +75,6 @@ label {
     border: none;
     border-radius: var(--radius);
     cursor: pointer;
-    transition: background-color 0.5s ease, color 0.5s ease;
 }
 
     .contact-form-container-div-button-submit:hover {
