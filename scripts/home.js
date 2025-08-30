@@ -166,12 +166,12 @@ function fetchArticles() {
                     });
                     document.querySelectorAll("img").forEach(img => {
                         img.style.display = "none";
-                        img.style.transform = 'translateX(0)';
+                        img.style.transform = 'translateX(-100px)';
                         img.style.opacity = '0';
                     });
                     targetArticle.style.display = "block";
                     targetImage.style.display = "block";
-                    // Animate the opacity of the displayed article
+                    // Animate the opacity and image of the displayed article
                     setTimeout(() => {
                         targetArticle.style.opacity = '1';
                         targetImage.style.transform = 'translateX(-200px)';

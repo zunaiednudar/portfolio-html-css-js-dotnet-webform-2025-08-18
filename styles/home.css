@@ -175,8 +175,8 @@
     border-radius: 10px;
     /*Initial opacity set to 0, updated to 1 in JavaScript*/
     opacity: 0;
-    /*Initial position set to translateX(0), updated to translateX(-200px) in JavaScript*/
-    transform: translateX(0);
+    /*Initial position set to translateX(-50px), updated to translateX(-200px) in JavaScript*/
+    transform: translateX(-100px);
     transition: transform 0.5s ease, opacity 0.5s ease-in;
 }
 
