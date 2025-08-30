@@ -32,8 +32,8 @@
         --color-bg-tertiary: #7DD3C6;
         --color-bg-quaternary: #4AA092;
         --color-font: rgba(0, 0, 0, 0.85);
-        --color-font-2: rgba(34, 70, 60, 0.8);
-        --color-hover: rgba(0, 0, 0, 0.7);
+        --color-font-2: rgba(255, 255, 255, 0.8);
+        --color-hover: rgba(0, 0, 0, 0.9);
         --color-focus: rgba(0, 0, 0, 0.9);
         --color-active: rgba(0, 0, 0, 1);
         --color-disabled: rgba(0, 0, 0, 0.4);
@@ -48,6 +48,31 @@
 * {
     padding: 0;
     margin: 0;
+}
+
+    *::placeholder {
+        color: var(--color-disabled);
+    }
+
+::-webkit-scrollbar {
+    width: 10px;
+}
+
+::-webkit-scrollbar-track {
+    background-color: var(--color-bg-primary);
+}
+
+::-webkit-scrollbar-thumb {
+    background-color: var(--color-bg-tertiary);
+    border: 3px solid var(--color-bg-primary);
+}
+
+::-webkit-scrollbar-thumb:hover {
+        background-color: var(--color-bg-quaternary);
+}
+
+::-webkit-scrollbar-button {
+    background-color: var(--color-bg-primary);
 }
 
 .site {
@@ -188,7 +213,7 @@
         font-size: var(--font-sz-lg);
         color: var(--color-disabled);
         cursor: pointer;
-        transition: all 1s ease;
+        transition: color 1s ease;
     }
 
     .site-form-div-header-nav-button-toggle-view-mode > i.fa-moon {
@@ -197,7 +222,7 @@
         font-size: var(--font-sz-lg);
         color: var(--color-disabled);
         cursor: pointer;
-        transition: all 1s ease;
+        transition: color 1s ease;
     }
 
     .site-form-div-header-nav-button-toggle-view-mode > i.fa-sun:hover {
