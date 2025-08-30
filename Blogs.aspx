@@ -1,4 +1,4 @@
-﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Site.Master" AutoEventWireup="true" CodeBehind="Blogs.aspx.cs" Inherits="portfolio_html_css_js_dotnet_webform_2025_08_18.Blogs" %>
+﻿<%@ Page Title="Blogs" Language="C#" MasterPageFile="~/Site.Master" AutoEventWireup="true" CodeBehind="Blogs.aspx.cs" Inherits="portfolio_html_css_js_dotnet_webform_2025_08_18.Blogs" %>
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
     <link rel="stylesheet" href="styles/blogs.css" type="text/css" />
 </asp:Content>

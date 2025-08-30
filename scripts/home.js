@@ -10,10 +10,38 @@ window.addEventListener('load', () => {
             icon.style.opacity = '1';
         }, 100 * index);
     });
-    setTimeout(() => {
-        homeSectionRightImg.style.transform = 'translateX(-200px)';
-        homeSectionRightImg.style.opacity = '1';
-    }, 50);
+    if (homeSectionRightImg) {
+        setTimeout(() => {
+            homeSectionRightImg.style.transform = 'translateX(-200px)';
+            homeSectionRightImg.style.opacity = '1';
+        }, 50);
+    }
+    // Fetch and display articles
+    fetchArticles();
+    // Attach click events to social media icons
+    const sideBarLiIcons = document.querySelectorAll(".home-section-left-aside-sidebar-nav-ul-li-icon");
+    sideBarLiIcons.forEach(icon => {
+        icon.addEventListener("click", (event) => {
+            event.preventDefault();
+            const info = icon.getAttribute("data-info");
+            switch (info) {
+                case "github":
+                    window.open(link_github, "_blank");
+                    break;
+                case "linkedin":
+                    window.open(link_linkedin, "_blank");
+                    break;
+                case "facebook":
+                    window.open(link_facebook, "_blank");
+                    break;
+                case "instagram":
+                    window.open(link_instagram, "_blank");
+                    break;
+                default:
+                    break;
+            }
+        });
+    });
 });
 function capitalizeFirstLetter(string) {
     if (!string) return "";
@@ -59,7 +87,8 @@ function fetchArticles() {
                 // Set the description: <p>
                 let _article_p_description = document.createElement('p');
                 _article_p_description.classList.add('article-description');
-                _article_p_description.textContent = article["ArticleDescription"];
+                // _article_p_description.textContent = article["ArticleDescription"];
+                _article_p_description.innerHTML = article["ArticleDescription"]; // Use innerHTML to render HTML content
                 // Append elements to the container
                 _article.appendChild(_article_h2_title);
                 _article.appendChild(_article_p_description);
@@ -211,27 +240,5 @@ function fetchArticles() {
 }
 // Run fetchArticles() after the entire page has fully loaded
 // window.onload = fetchArticles;
-window.addEventListener("load", fetchArticles);
-const sideBarLiIcons = document.querySelectorAll(".home-section-left-aside-sidebar-nav-ul-li-icon");
-sideBarLiIcons.forEach(icon => {
-    icon.addEventListener("click", (event) => {
-        event.preventDefault();
-        const info = icon.getAttribute("data-info");
-        switch(info) {
-            case "github":
-                window.open(link_github, "_blank");
-                break;
-            case "linkedin":
-                window.open(link_linkedin, "_blank");
-                break;
-            case "facebook":
-                window.open(link_facebook, "_blank");
-                break;
-            case "instagram":
-                window.open(link_instagram, "_blank");
-                break;
-            default:
-                break;
-        }
-    });
-});
+// window.addEventListener("load", fetchArticles); // Handled at the top
+

@@ -110,6 +110,12 @@
 
 .site-form-div-header-nav-ul-li {}
 
+.site-form-div-header-nav-ul-li.active > a {
+    color: var(--color-disabled);
+    pointer-events: none;
+    cursor: default;
+}
+
     .site-form-div-header-nav-ul-li > a {
         text-decoration: none;
         color: var(--color-disabled);
