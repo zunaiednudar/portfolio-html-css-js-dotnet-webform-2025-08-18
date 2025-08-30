@@ -27,6 +27,8 @@
 }
 
 .home-section-left-article {
+    height: 100%;
+    width: 100%;
     display: none;
     /*Initial opacity set to 0, updated to 1 in JavaScript*/
     opacity: 0;
@@ -179,5 +181,3 @@
     transform: translateX(-100px);
     transition: transform 0.5s ease, opacity 0.5s ease-in;
 }
-
-

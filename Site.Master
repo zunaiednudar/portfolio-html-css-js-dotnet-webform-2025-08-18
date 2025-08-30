@@ -1,31 +1,20 @@
 ﻿<%@ Master Language="C#" AutoEventWireup="true" CodeBehind="Site.master.cs" Inherits="portfolio_html_css_js_dotnet_webform_2025_08_18.Site" %>
-
 <!DOCTYPE html>
-
-<html>
+<html lang="en">
 <head runat="server">
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-
     <!--Google Fonts-->
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="anonymous">
-    <link href="https://fonts.googleapis.com/css2?family=Josefin+Sans:ital,wght@0,100..700;1,100..700&display=swap" rel="stylesheet">
-
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="anonymous" />
+    <link href="https://fonts.googleapis.com/css2?family=Josefin+Sans:ital,wght@0,100..700;1,100..700&display=swap" rel="stylesheet" />
     <!--Web app icon-->
     <link rel="icon" href="images/icons8-person-100.png" type="image/png">
-
     <!--Icons (Font Awesome)-->
     <script src="https://kit.fontawesome.com/115498d46a.js" crossorigin="anonymous"></script>
-
     <!--CSS-->
     <link rel="stylesheet" href="styles/site.css" type="text/css" />
-
-    <!--JavaScript-->
-    <script src="scripts/site.js"></script>
-
     <title></title>
-
     <!--This is where each page will inject its unique content-->
     <asp:ContentPlaceHolder ID="head" runat="server">
     </asp:ContentPlaceHolder>
@@ -50,7 +39,7 @@
                             Text="Download CV"
                             OnClick="DownloadCV_Click" />
                         <!--<button class="site-form-div-header-nav-button-download-cv">Download CV</button>-->
-                        <button class="site-form-div-header-nav-button-toggle-view-mode">
+                        <button class="site-form-div-header-nav-button-toggle-view-mode" type="button" title="#">
                             <i class="fa-solid fa-sun"></i>
                             <i class="fa-solid fa-moon"></i>
                         </button>

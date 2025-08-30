@@ -175,6 +175,16 @@ function fetchArticles() {
             _article = document.createElement('article');
             _article.classList.add('home-section-left-article');
             _article.id = "article-contact";
+            // Set and append iframe for contact form
+            let iframe = document.createElement('iframe');
+            iframe.id = "contactIframe";
+            iframe.src = "Contact.aspx";
+            iframe.width = "100%";
+            iframe.height = "100%";
+            iframe.style.border = "none";
+            iframe.title = "ContactForm";
+            // Append iframe to the contact article
+            _article.appendChild(iframe);
             // Append the contact container to homeSectionLeftArticles
             homeSectionLeftArticles.appendChild(_article);
             // Set the contact tab: <li>
