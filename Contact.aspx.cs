@@ -14,6 +14,12 @@ namespace portfolio_html_css_js_dotnet_webform_2025_08_18
     {
         protected void Page_Load(object sender, EventArgs e)
         {
+            if (Request.QueryString["message"] != null)
+            {
+                string message = Request.QueryString["message"];
+                lblMessage.Text = message;
+                lblMessage.Visible = true;
+            }
             // Only populate fields with cookies if it's not a postback
             if (!IsPostBack)
             {
@@ -56,16 +62,19 @@ namespace portfolio_html_css_js_dotnet_webform_2025_08_18
                 int rowsAffected = command.ExecuteNonQuery();
                 if (rowsAffected > 0)
                 {
-                    Response.Write("<script>alert('Your message has been sent successfully!');</script>");
+                    string successMessage = "Message Sent";
+                    // Prevent resubmitting due to theme change (Temporary Bug Fix)                  
+                    Response.Redirect("Contact.aspx?message=" + HttpUtility.UrlEncode(successMessage));
                 }
                 else
                 {
-                    Response.Write("<script>alert('There was an error sending your message. Please try again later.');</script>");
+                    string failureMessage = "There was an error sending your message. Please try again later.";
+                    Response.Redirect("Contact.aspx?message=" + HttpUtility.UrlEncode(failureMessage));
                 }
             }
             catch (Exception ex)
             {
-                Response.Write("<script>alert('An error occurred: " + ex.Message + "');</script>");
+                Console.Write(ex.ToString());
             }
             finally
             {
