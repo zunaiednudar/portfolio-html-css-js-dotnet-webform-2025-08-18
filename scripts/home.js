@@ -117,28 +117,82 @@ function fetchArticles() {
                 homeSectionRight.appendChild(_article_img);
             });
             // Detached tabs
-            // Set the contact container: <article>
+            // Set the skills container: <article>
             let _article = document.createElement('article');
+            _article.classList.add('home-section-left-article');
+            _article.id = "article-skills";
+            // Append the skills container to homeSectionLeftArticles
+            homeSectionLeftArticles.appendChild(_article);
+            // Set the skills tab: <li>
+            let _article_li_tab = document.createElement('li');
+            _article_li_tab.classList.add('home-section-left-aside-sidebar-nav-ul-li-tab');
+            _article_li_tab.setAttribute('data-target', "article-skills");
+            _article_li_tab.setAttribute('data-image', "image-skills");
+            // Set and append horizontal line before skills tab: <hr>
+            _article_li_tab.appendChild(document.createElement('hr'));
+            // Set and append the skills tab link: <a>
+            let _article_li_tab_a_title = document.createElement('a');
+            _article_li_tab_a_title.textContent = "Skills";
+            _article_li_tab_a_title.href = "#";
+            _article_li_tab.appendChild(_article_li_tab_a_title);
+            // Append the skills tab to the homeSectionLeftSidebarTabs
+            homeSectionLeftSidebarTabs.appendChild(_article_li_tab);
+            // Set the skills image: <img>
+            let _article_img = document.createElement('img');
+            _article_img.classList.add('home-section-right-img');
+            _article_img.id = "image-skills";
+            _article_img.src = "images/logo-skills.jpg";
+            // Append the image to the homeSectionRight
+            homeSectionRight.appendChild(_article_img);
+            // Set the education container: <article>
+            _article = document.createElement('article');
+            _article.classList.add('home-section-left-article');
+            _article.id = "article-education";
+            // Append the education container to homeSectionLeftArticles
+            homeSectionLeftArticles.appendChild(_article);
+            // Set the education tab: <li>
+            _article_li_tab = document.createElement('li');
+            _article_li_tab.classList.add('home-section-left-aside-sidebar-nav-ul-li-tab');
+            _article_li_tab.setAttribute('data-target', "article-education");
+            _article_li_tab.setAttribute('data-image', "image-education");
+            // Set and append horizontal line before education tab: <hr>
+            _article_li_tab.appendChild(document.createElement('hr'));
+            // Set and append the education tab link: <a>
+            _article_li_tab_a_title = document.createElement('a');
+            _article_li_tab_a_title.textContent = "Education";
+            _article_li_tab_a_title.href = "#";
+            _article_li_tab.appendChild(_article_li_tab_a_title);
+            // Append the education tab to the homeSectionLeftSidebarTabs
+            homeSectionLeftSidebarTabs.appendChild(_article_li_tab);
+            // Set the education image: <img>
+            _article_img = document.createElement('img');
+            _article_img.classList.add('home-section-right-img');
+            _article_img.id = "image-education";
+            _article_img.src = "images/logo-education.jpg";
+            // Append the image to the homeSectionRight
+            homeSectionRight.appendChild(_article_img);
+            // Set the contact container: <article>
+            _article = document.createElement('article');
             _article.classList.add('home-section-left-article');
             _article.id = "article-contact";
             // Append the contact container to homeSectionLeftArticles
             homeSectionLeftArticles.appendChild(_article);
             // Set the contact tab: <li>
-            let _article_li_tab = document.createElement('li');
+            _article_li_tab = document.createElement('li');
             _article_li_tab.classList.add('home-section-left-aside-sidebar-nav-ul-li-tab');
             _article_li_tab.setAttribute('data-target', "article-contact");
             _article_li_tab.setAttribute('data-image', "image-contact");
             // Set and append horizontal line before contact tab: <hr>
             _article_li_tab.appendChild(document.createElement('hr'));
             // Set and append the contact tab link: <a>
-            let _article_li_tab_a_title = document.createElement('a');
+            _article_li_tab_a_title = document.createElement('a');
             _article_li_tab_a_title.textContent = "Contact";
             _article_li_tab_a_title.href = "#";
             _article_li_tab.appendChild(_article_li_tab_a_title);
             // Append the contact tab to the homeSectionLeftSidebarTabs
             homeSectionLeftSidebarTabs.appendChild(_article_li_tab);
             // Set the contact image: <img>
-            let _article_img = document.createElement('img');
+            _article_img = document.createElement('img');
             _article_img.classList.add('home-section-right-img');
             _article_img.id = "image-contact";
             _article_img.src = "images/logo-contact.jpg";

@@ -111,7 +111,7 @@
 .site-form-div-header-nav-ul-li {}
 
 .site-form-div-header-nav-ul-li.active > a {
-    color: var(--color-disabled);
+    color: var(--color-bg-tertiary);
     pointer-events: none;
     cursor: default;
 }
