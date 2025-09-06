@@ -46,10 +46,14 @@ document.addEventListener("DOMContentLoaded", () => {
     let moonIcon = document.querySelector('.site-form-div-header-nav-button-toggle-view-mode .fa-moon');
     // Notify iframe of theme change
     function notifyThemeChange() {
-        const iframe = document.getElementById('contactIframe');
+        const iframeContact = document.getElementById('contactIframe');
+        const iframeSkills = document.getElementById('skillsIframe');
         // Send signal message to iframe (Contact.aspx)
-        if (!iframe) return;
-        iframe.contentWindow.postMessage("themeChanged", window.location.origin);
+        if (!iframeContact) return;
+        iframeContact.contentWindow.postMessage("themeChanged", window.location.origin);
+        // Send signal message to iframe (Skills.aspx)
+        if (!iframeSkills) return;
+        iframeSkills.contentWindow.postMessage("themeChanged", window.location.origin);
     }
     function setCookie(name, value, days) {
         let expires = "";
