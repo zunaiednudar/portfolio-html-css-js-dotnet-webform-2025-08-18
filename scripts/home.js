@@ -5,6 +5,7 @@ const link_instagram = "https://www.threads.com/@zunaiednudar?xmt=AQF0_SyAg6R5n3
 const typingTimers = new WeakMap(); // To track typing per element
 window.addEventListener('load', () => {
     const homeSectionLeftSidebarIcon = document.querySelectorAll(".home-section-left-aside-sidebar-nav-ul-li-icon > i");
+    // Only the first right-section image (used for initial animation)
     const homeSectionRightImg = document.querySelector(".home-section-right-img");
     homeSectionLeftSidebarIcon.forEach((icon, index) => {
         setTimeout(() => {
@@ -43,6 +44,13 @@ window.addEventListener('load', () => {
             }
         });
     });
+});
+window.addEventListener('resize', () => {
+    const currentImageId = document.querySelector(".home-section-left-aside-sidebar-nav-ul-li-tab.selected")?.getAttribute("data-image");
+    if (currentImageId) {
+        const currentImage = document.querySelector(`#${currentImageId}`);
+        showImageResponsive(currentImage);
+    }
 });
 function capitalizeFirstLetter(string) {
     if (!string) return "";
@@ -252,14 +260,14 @@ function fetchArticles() {
             // Display the default article + image
             document.querySelector(`#${defaultTabId}`).style.display = "block";
             document.querySelector(`[data-target="${defaultTabId}"]`).classList.add("selected");
-            document.querySelector(`#${defaultImageId}`).style.display = "block";
+            // document.querySelector(`#${defaultImageId}`).style.display = "block";
+            showImageResponsive(document.querySelector(`#${defaultImageId}`));
             // Deploy typing effect for the first loaded article if applicable
             if (defaultTabId !== "article-education" && defaultTabId !== "article-contact" && defaultTabId !== "article-skills") {
                 const typingElement = document.querySelector(`#${defaultTabId} .article-description`);
                 // typeHTML(typingElement, 5);
                 runTypingOnce(typingElement, 5);
             }
-
             setTimeout(() => {
                 // Animate the opacity of the first article
                 // document.querySelector(`#article-${articles[0]["ArticleName"]}`).style.opacity = '1';
@@ -273,8 +281,10 @@ function fetchArticles() {
                 // Animate the horizontal line of the default sidebar tab
                 document.querySelector(`[data-target="${defaultTabId}"]`).querySelector("hr").style.flexGrow = '1';
                 // Animate the position and opacity of the default image
-                document.querySelector(`#${defaultImageId}`).style.transform = "translateX(-200px)";
-                document.querySelector(`#${defaultImageId}`).style.opacity = '1';
+                if (window.innerWidth > 1024) {
+                    document.querySelector(`#${defaultImageId}`).style.transform = "translateX(-200px)";
+                    document.querySelector(`#${defaultImageId}`).style.opacity = '1';
+                }
             }, 50);
             // Add click event listeners to sidebar tabs
             const sideBarLiTabs = document.querySelectorAll(".home-section-left-aside-sidebar-nav-ul-li-tab");
@@ -321,7 +331,8 @@ function fetchArticles() {
                         img.style.opacity = '0';
                     });
                     targetArticle.style.display = "block";
-                    targetImage.style.display = "block";
+                    // targetImage.style.display = "block";
+                    showImageResponsive(targetImage);
                     if (targetId !== "article-education" && targetId !== "article-contact" && targetId !== "article-skills") {
                         const typingElement = targetArticle.querySelector('.article-description');
                         // typeText(typingElement, 20);
@@ -332,8 +343,10 @@ function fetchArticles() {
                     // Animate the opacity and image of the displayed article
                     setTimeout(() => {
                         targetArticle.style.opacity = '1';
-                        targetImage.style.transform = 'translateX(-200px)';
-                        targetImage.style.opacity = '1';
+                        if (window.innerWidth > 1024) {
+                            targetImage.style.transform = 'translateX(-200px)';
+                            targetImage.style.opacity = '1';
+                        }
                     }, 30);
                 });
             });
@@ -432,6 +445,24 @@ function runTypingOnce(element, speed = 30) {
     typeHTML(element, speed);
     // Mark as typed
     sessionStorage.setItem(typedKey, "true");
+}
+function showImageResponsive(targetImage) {
+    const isTablet = window.innerWidth <= 1024;
+    if (!targetImage) return;
+    if (isTablet) {
+        targetImage.style.display = "block";
+        targetImage.style.position = "relative";
+        targetImage.style.transform = "none";
+        targetImage.style.opacity = "1";
+        targetImage.style.margin = "0 auto 20px auto";
+    } else {
+        targetImage.style.display = "block";
+        targetImage.style.position = "";
+        setTimeout(() => {
+            targetImage.style.transform = "translateX(-200px)";
+            targetImage.style.opacity = "1";
+        }, 30);
+    }
 }
 // Run fetchArticles() after the entire page has fully loaded
 // window.onload = fetchArticles;
