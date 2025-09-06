@@ -64,7 +64,7 @@ namespace portfolio_html_css_js_dotnet_webform_2025_08_18
                 {
                     string successMessage = "Message Sent";
                     // Prevent resubmitting due to theme change (Temporary Bug Fix)                  
-                    Response.Redirect("Contact.aspx?message=" + HttpUtility.UrlEncode(successMessage));
+                    Response.Redirect("Contact.aspx?message=" + HttpUtility.UrlEncode(successMessage), false);
                 }
                 else
                 {

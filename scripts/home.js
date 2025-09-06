@@ -281,7 +281,7 @@ function fetchArticles() {
                 // Animate the horizontal line of the default sidebar tab
                 document.querySelector(`[data-target="${defaultTabId}"]`).querySelector("hr").style.flexGrow = '1';
                 // Animate the position and opacity of the default image
-                if (window.innerWidth > 1024) {
+                if (window.innerWidth > 1280) {
                     document.querySelector(`#${defaultImageId}`).style.transform = "translateX(-200px)";
                     document.querySelector(`#${defaultImageId}`).style.opacity = '1';
                 }
@@ -343,7 +343,7 @@ function fetchArticles() {
                     // Animate the opacity and image of the displayed article
                     setTimeout(() => {
                         targetArticle.style.opacity = '1';
-                        if (window.innerWidth > 1024) {
+                        if (window.innerWidth > 1280) {
                             targetImage.style.transform = 'translateX(-200px)';
                             targetImage.style.opacity = '1';
                         }
@@ -447,15 +447,23 @@ function runTypingOnce(element, speed = 30) {
     sessionStorage.setItem(typedKey, "true");
 }
 function showImageResponsive(targetImage) {
-    const isTablet = window.innerWidth <= 1024;
+    const isSmall = window.innerWidth <= 1280;
     if (!targetImage) return;
-    if (isTablet) {
+    let siteFormDivMain = document.querySelector(".site-form-div-main");
+    let homeSectionLeft = document.querySelector(".home-section-left");
+    let homeSectionRight = document.querySelector(".home-section-right");
+    if (isSmall) {
+        siteFormDivMain.insertBefore(homeSectionRight, homeSectionLeft);
         targetImage.style.display = "block";
         targetImage.style.position = "relative";
         targetImage.style.transform = "none";
-        targetImage.style.opacity = "1";
         targetImage.style.margin = "0 auto 20px auto";
+        targetImage.style.opacity = "0";
+        setTimeout(() => {
+            targetImage.style.opacity = "1";
+        }, 30);
     } else {
+        siteFormDivMain.insertBefore(homeSectionLeft, homeSectionRight);
         targetImage.style.display = "block";
         targetImage.style.position = "";
         setTimeout(() => {
