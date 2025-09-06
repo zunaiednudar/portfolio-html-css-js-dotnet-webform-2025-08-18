@@ -328,6 +328,20 @@
         font-size: var(--font-sz-sm);
     }
 
+        .timeline-item.left {
+            border-bottom-left-radius: 10px;
+            transform: translateX(0);
+        }
+
+        .timeline-item.right {
+            border-bottom-right-radius: 10px;
+            transform: translateX(0);
+        }
+
+    #article-education .vertical-line {
+        display: none;
+    }
+
     /* Sidebar */
 
     .home-section-left-aside-sidebar {
@@ -393,7 +407,7 @@
         max-width: 100%;
         height: auto;
         margin: 0 auto;
-        transform: none;
+/*        transform: none;*/
         opacity: 1;
     }
 }
