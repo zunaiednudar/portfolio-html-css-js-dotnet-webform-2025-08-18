@@ -2,6 +2,7 @@
 const link_linkedin = "https://www.linkedin.com/in/zunaied-nudar-a1226525b/";
 const link_facebook = "https://www.facebook.com/profile.php?id=100085206264056";
 const link_instagram = "https://www.threads.com/@zunaiednudar?xmt=AQF0_SyAg6R5n3YBhdgy1a7SATycWfW7t-uLot5UP1z6s-w";
+const typingTimers = new WeakMap(); // To track typing per element
 window.addEventListener('load', () => {
     const homeSectionLeftSidebarIcon = document.querySelectorAll(".home-section-left-aside-sidebar-nav-ul-li-icon > i");
     const homeSectionRightImg = document.querySelector(".home-section-right-img");
@@ -88,7 +89,19 @@ function fetchArticles() {
                 let _article_p_description = document.createElement('p');
                 _article_p_description.classList.add('article-description');
                 // _article_p_description.textContent = article["ArticleDescription"];
-                _article_p_description.innerHTML = article["ArticleDescription"]; // Use innerHTML to render HTML content
+                // _article_p_description.innerHTML = article["ArticleDescription"]; // Use innerHTML to render HTML content
+                let text = article["ArticleDescription"] || "";
+                // Replace tabs with 4 spaces
+                // text = text.replace(/\t/g, "&nbsp;&nbsp;&nbsp;&nbsp;");
+                text = text.replace(/\t/g, "    ");
+                // Replace spaces
+                // text = text.replace(/ /g, "&nbsp;");
+                text = text.replace(/ /g, " ");
+                // Replace newlines with <br>
+                text = text.replace(/\n/g, "<br>");
+                _article_p_description.innerHTML = text;
+                // Save the original HTML for typing
+                _article_p_description.setAttribute('data-fullhtml', text);
                 // Append elements to the container
                 _article.appendChild(_article_h2_title);
                 _article.appendChild(_article_p_description);
@@ -240,6 +253,13 @@ function fetchArticles() {
             document.querySelector(`#${defaultTabId}`).style.display = "block";
             document.querySelector(`[data-target="${defaultTabId}"]`).classList.add("selected");
             document.querySelector(`#${defaultImageId}`).style.display = "block";
+            // Deploy typing effect for the first loaded article if applicable
+            if (defaultTabId !== "article-education" && defaultTabId !== "article-contact" && defaultTabId !== "article-skills") {
+                const typingElement = document.querySelector(`#${defaultTabId} .article-description`);
+                // typeHTML(typingElement, 5);
+                runTypingOnce(typingElement, 5);
+            }
+
             setTimeout(() => {
                 // Animate the opacity of the first article
                 // document.querySelector(`#article-${articles[0]["ArticleName"]}`).style.opacity = '1';
@@ -302,6 +322,13 @@ function fetchArticles() {
                     });
                     targetArticle.style.display = "block";
                     targetImage.style.display = "block";
+                    if (targetId !== "article-education" && targetId !== "article-contact" && targetId !== "article-skills") {
+                        const typingElement = targetArticle.querySelector('.article-description');
+                        // typeText(typingElement, 20);
+                        // typingElement.setAttribute('data-fullhtml', typingElement.innerHTML);
+                        // typeHTML(typingElement, 5);
+                        runTypingOnce(typingElement, 5);
+                    }
                     // Animate the opacity and image of the displayed article
                     setTimeout(() => {
                         targetArticle.style.opacity = '1';
@@ -359,7 +386,53 @@ function animateEducationItems() {
         }, 100 * index);
     });
 }
-
+function typeHTML(element, speed = 30) {
+    // Cancel any ongoing typing
+    if (typingTimers.has(element)) {
+        clearTimeout(typingTimers.get(element));
+        typingTimers.delete(element);
+    }
+    const fullHTML = element.getAttribute('data-fullhtml') || element.innerHTML; // Keep existing formatting
+    if (!fullHTML) return; // Nothing to type
+    element.innerHTML = ''; // Clear before typing
+    let i = 0;
+    function type() {
+        // If the current char is part of an HTML tag, type the whole tag at once
+        if (fullHTML[i] === '<') {
+            let endTag = fullHTML.indexOf('>', i);
+            if (endTag !== -1) {
+                element.innerHTML += fullHTML.slice(i, endTag + 1);
+                i = endTag + 1;
+            } else {
+                element.innerHTML += fullHTML[i];
+                i++;
+            }
+        } else {
+            element.innerHTML += fullHTML[i];
+            i++;
+        }
+        if (i < fullHTML.length) {
+            const timer = setTimeout(type, speed);
+            typingTimers.set(element, timer); // Save the timer
+        } else {
+            typingTimers.delete(element);
+        }
+    }
+    type();
+}
+function runTypingOnce(element, speed = 30) {
+    const articleId = element.closest('article').id;
+    const typedKey = `typed-${articleId}`; // Key to store in sessionStorage
+    // If already typed in this session, just show full content
+    if (sessionStorage.getItem(typedKey)) {
+        element.innerHTML = element.getAttribute('data-fullhtml');
+        return;
+    }
+    // Otherwise, run typing
+    typeHTML(element, speed);
+    // Mark as typed
+    sessionStorage.setItem(typedKey, "true");
+}
 // Run fetchArticles() after the entire page has fully loaded
 // window.onload = fetchArticles;
 // window.addEventListener("load", fetchArticles); // Handled at the top
