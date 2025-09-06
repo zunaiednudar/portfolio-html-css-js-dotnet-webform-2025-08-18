@@ -31,6 +31,7 @@
             <div class="contact-form-container-div">
                 <asp:Button ID="btnFormSubmit" runat="server" Text="Submit" CssClass="contact-form-container-div-button-submit" OnClick="btnSubmit_Click" />
             </div>
+            <asp:Label ID="lblMessage" runat="server" Visible="false" />
             <!--JavaScript-->
             <script src="scripts/contact.js"></script>
         </div>

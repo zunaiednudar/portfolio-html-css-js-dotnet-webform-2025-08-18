@@ -121,6 +121,16 @@ function fetchArticles() {
             let _article = document.createElement('article');
             _article.classList.add('home-section-left-article');
             _article.id = "article-skills";
+            // Set and append iframe for contact form
+            let iframe = document.createElement('iframe');
+            iframe.id = "skillsIframe";
+            iframe.src = "Skills.aspx";
+            iframe.width = "100%";
+            iframe.height = "100%";
+            iframe.style.border = "none";
+            iframe.title = "MySkills";
+            // Append iframe to the contact article
+            _article.appendChild(iframe);
             // Append the skills container to homeSectionLeftArticles
             homeSectionLeftArticles.appendChild(_article);
             // Set the skills tab: <li>
@@ -176,7 +186,7 @@ function fetchArticles() {
             _article.classList.add('home-section-left-article');
             _article.id = "article-contact";
             // Set and append iframe for contact form
-            let iframe = document.createElement('iframe');
+            iframe = document.createElement('iframe');
             iframe.id = "contactIframe";
             iframe.src = "Contact.aspx";
             iframe.width = "100%";
@@ -280,6 +290,7 @@ function fetchArticles() {
                     const targetArticle = document.querySelector(`#${targetId}`);
                     const targetImage = document.querySelector(`#${targetImageId}`);
                     if (!targetArticle) return; // Safety check
+                    if (targetId === "article-education") animateEducationItems();
                     homeSectionLeftArticles.querySelectorAll("article").forEach(article => {
                         article.style.display = "none";
                         article.style.opacity = '0';
@@ -299,9 +310,56 @@ function fetchArticles() {
                     }, 30);
                 });
             });
+            // Fetch and display education
+            fetchEducation();
         })
         .catch(err => console.error(err));
 }
+function fetchEducation() {
+    return fetch('Home.aspx/GetEducation', {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json'
+        }
+    })
+        .then(response => response.json())
+        .then(data => {
+            let education = JSON.parse(data.d); // Parse the JSON string into an object (IMPORTANT)
+            let educationArticle = document.querySelector("#article-education");
+            educationArticle.innerHTML = ""; // Clear old content
+            let timeline = document.createElement("div"); // Create horizontal timeline
+            timeline.classList.add("timeline");
+            education.forEach((educationStage, index) => {
+                let item = document.createElement("div");
+                item.classList.add("timeline-item");
+                // Alternate item position left/right
+                item.classList.add(index % 2 === 0 ? "left" : "right");
+                item.innerHTML = `
+                    <h3>${educationStage.Title}</h3>
+                    <p>${educationStage.Institution}</p>
+                    <span>${educationStage.StartYear} - ${educationStage.EndYear}</span>
+                `;
+                // item.appendChild(content);
+                timeline.appendChild(item);
+            });
+            educationArticle.appendChild(timeline);
+            let verticalLine = document.createElement("div");
+            verticalLine.classList.add("vertical-line");
+            educationArticle.appendChild(verticalLine);
+            animateEducationItems();
+        })
+        .catch(err => console.error("Error fetching education: ", err));
+}
+function animateEducationItems() {
+    let educationArticleItems = document.querySelectorAll("#article-education .timeline-item");
+    educationArticleItems.forEach((item, index) => {
+        item.style.opacity = '0'; // reset before animating
+        setTimeout(() => {
+            item.style.opacity = '1';
+        }, 100 * index);
+    });
+}
+
 // Run fetchArticles() after the entire page has fully loaded
 // window.onload = fetchArticles;
 // window.addEventListener("load", fetchArticles); // Handled at the top

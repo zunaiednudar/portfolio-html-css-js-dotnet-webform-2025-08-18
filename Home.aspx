@@ -65,11 +65,11 @@
                         <a href="#">Skills</a></li>
                     <li class="home-section-left-aside-sidebar-nav-ul-li-tab" data-target="article-education" data-image="image-education">
                         <hr />
-                        <a href="#">Education</a></li>
-                -->
+                        <a href="#">Education</a></li> 
                     <li class="home-section-left-aside-sidebar-nav-ul-li-tab" data-target="article-contact">
                         <hr />
                         <a href="#">Contact</a></li>
+                    -->
                 </ul>
                 <ul class="home-section-left-aside-sidebar-nav-ul" id="home-sidebar-ul-icons">
                     <li class="home-section-left-aside-sidebar-nav-ul-li-icon" data-info="github">
