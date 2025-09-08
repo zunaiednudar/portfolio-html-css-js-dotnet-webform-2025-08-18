@@ -5,6 +5,11 @@
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="home" runat="server">
     <section class="home-section-left">
+        <div class="menu-bar">
+            <hr />
+            <hr />
+            <hr />
+        </div>
         <div class="home-section-left-div-articles">
             <!--Main body-->
             <!--
