@@ -10,6 +10,27 @@
             <hr />
             <hr />
         </div>
+        <aside class="home-section-left-aside-sidebar-responsive">
+            <nav class="home-section-left-aside-sidebar-nav-responsive">
+                <ul class="home-section-left-aside-sidebar-nav-ul-responsive" id="home-sidebar-ul-tabs-responsive">
+                <!---->
+                </ul>
+                <ul class="home-section-left-aside-sidebar-nav-ul-responsive" id="home-sidebar-ul-icons-responsive">
+                    <li class="home-section-left-aside-sidebar-nav-ul-li-icon-responsive" data-info-responsive="github">
+                        <i class="fa-brands fa-github"></i>
+                    </li>
+                    <li class="home-section-left-aside-sidebar-nav-ul-li-icon-responsive" data-info-responsive="linkedin">
+                        <i class="fa-brands fa-linkedin"></i>
+                    </li>
+                    <li class="home-section-left-aside-sidebar-nav-ul-li-icon-responsive" data-info-responsive="facebook">
+                        <i class="fa-brands fa-square-facebook"></i>
+                    </li>
+                    <li class="home-section-left-aside-sidebar-nav-ul-li-icon-responsive" data-info-responsive="instagram">
+                        <i class="fa-brands fa-instagram"></i>
+                    </li>
+                </ul>
+            </nav>
+        </aside>
         <div class="home-section-left-div-articles">
             <!--Main body-->
             <!--
