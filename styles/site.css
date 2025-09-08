@@ -27,15 +27,15 @@
 
     :root.light {
         /*LIGHT MODE*/
-        --color-bg-primary: #C8F5EC;
+        --color-bg-primary: #008B80;
         --color-bg-secondary: #FFFFFF;
-        --color-bg-tertiary: #7DD3C6;
-        --color-bg-quaternary: #4AA092;
-        --color-font: rgba(0, 0, 0, 0.85);
-        --color-font-2: rgba(255, 255, 255, 0.8);
-        --color-hover: rgba(0, 0, 0, 0.9);
-        --color-focus: rgba(0, 0, 0, 0.9);
-        --color-active: rgba(0, 0, 0, 1);
+        --color-bg-tertiary: #EAEAEA;
+        --color-bg-quaternary: #B2DFDB;
+        --color-font: #212121;
+        --color-font-2: #FFFFFF;
+        --color-hover: #028090;
+        --color-focus: #05668D;
+        --color-active: #034752;
         --color-disabled: rgba(0, 0, 0, 0.4);
         /*--color-sun: #E0A800;*/
         --color-moon: #4A4A4A;

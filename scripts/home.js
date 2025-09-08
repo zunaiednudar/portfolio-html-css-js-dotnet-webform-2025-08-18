@@ -3,7 +3,15 @@ const link_linkedin = "https://www.linkedin.com/in/zunaied-nudar-a1226525b/";
 const link_facebook = "https://www.facebook.com/profile.php?id=100085206264056";
 const link_instagram = "https://www.threads.com/@zunaiednudar?xmt=AQF0_SyAg6R5n3YBhdgy1a7SATycWfW7t-uLot5UP1z6s-w";
 const typingTimers = new WeakMap(); // To track typing per element
+const menubarResponsive = document.querySelector(".menu-bar");
+const sidebarResponsive = document.querySelector(".home-section-left-aside-sidebar-responsive");
 window.addEventListener('load', () => {
+    syncResponsiveTab();
+    syncNonResponsiveTab();
+    const sidebarResponsiveOpen = sessionStorage.getItem("sidebarResponsiveOpen");
+    if (sidebarResponsiveOpen === "true") {
+        sidebarResponsive.classList.add("active");
+    }
     const homeSectionLeftSidebarIcon = document.querySelectorAll(".home-section-left-aside-sidebar-nav-ul-li-icon > i");
     // Only the first right-section image (used for initial animation)
     const homeSectionRightImg = document.querySelector(".home-section-right-img");
@@ -44,6 +52,30 @@ window.addEventListener('load', () => {
             }
         });
     });
+    // Attach click events to social media icons (Responsive)
+    const sideBarLiIconsResponsive = document.querySelectorAll(".home-section-left-aside-sidebar-nav-ul-li-icon-responsive");
+    sideBarLiIconsResponsive.forEach(icon => {
+        icon.addEventListener("click", (event) => {
+            event.preventDefault();
+            const info = icon.getAttribute("data-info-responsive");
+            switch (info) {
+                case "github":
+                    window.open(link_github, "_blank");
+                    break;
+                case "linkedin":
+                    window.open(link_linkedin, "_blank");
+                    break;
+                case "facebook":
+                    window.open(link_facebook, "_blank");
+                    break;
+                case "instagram":
+                    window.open(link_instagram, "_blank");
+                    break;
+                default:
+                    break;
+            }
+        });
+    });
 });
 window.addEventListener('resize', () => {
     const currentImageId = document.querySelector(".home-section-left-aside-sidebar-nav-ul-li-tab.selected")?.getAttribute("data-image");
@@ -51,6 +83,12 @@ window.addEventListener('resize', () => {
         const currentImage = document.querySelector(`#${currentImageId}`);
         showImageResponsive(currentImage);
     }
+    syncResponsiveTab();
+    syncNonResponsiveTab();
+});
+menubarResponsive.addEventListener("click", () => {
+    sidebarResponsive.classList.toggle("active");
+    sessionStorage.setItem("sidebarResponsiveOpen", sidebarResponsive.classList.contains("active"));
 });
 function capitalizeFirstLetter(string) {
     if (!string) return "";
@@ -80,6 +118,7 @@ function fetchArticles() {
             let articles = JSON.parse(data.d); // Parse the JSON string into an object (IMPORTANT)
             let homeSectionLeftArticles = document.querySelector(".home-section-left-div-articles"); // Container for articles
             let homeSectionLeftSidebarTabs = document.querySelector("#home-sidebar-ul-tabs");
+            let homeSectionLeftSidebarTabsResponsive = document.querySelector("#home-sidebar-ul-tabs-responsive");
             let homeSectionRight = document.querySelector(".home-section-right"); // Container for right section images
             homeSectionLeftArticles.innerHTML = ""; // Clear existing articles
             homeSectionLeftSidebarTabs.innerHTML = ""; // Clear existing tabs
@@ -100,11 +139,8 @@ function fetchArticles() {
                 // _article_p_description.innerHTML = article["ArticleDescription"]; // Use innerHTML to render HTML content
                 let text = article["ArticleDescription"] || "";
                 // Replace tabs with 4 spaces
-                // text = text.replace(/\t/g, "&nbsp;&nbsp;&nbsp;&nbsp;");
-                text = text.replace(/\t/g, "    ");
-                // Replace spaces
-                // text = text.replace(/ /g, "&nbsp;");
-                text = text.replace(/ /g, " ");
+                text = text.replace(/\t/g, "&nbsp;&nbsp;&nbsp;&nbsp;");
+                // text = text.replace(/\t/g, "    ");
                 // Replace newlines with <br>
                 text = text.replace(/\n/g, "<br>");
                 _article_p_description.innerHTML = text;
@@ -129,6 +165,19 @@ function fetchArticles() {
                 _article_li_tab.appendChild(_article_li_tab_a_title);
                 // Append the tab to the homeSectionLeftSidebarTabs
                 homeSectionLeftSidebarTabs.appendChild(_article_li_tab);
+                // Responsive
+                // Set the corresponding tab: <li>
+                let _article_li_tab_responsive = document.createElement('li');
+                _article_li_tab_responsive.classList.add('home-section-left-aside-sidebar-nav-ul-li-tab-responsive');
+                _article_li_tab_responsive.setAttribute('data-target-responsive', `article-${article["ArticleName"]}`);
+                _article_li_tab_responsive.setAttribute('data-image-responsive', `image-${article["ArticleName"]}`);
+                // Set and append the tab link: <a>
+                let _article_li_tab_a_title_responsive = document.createElement('a');
+                _article_li_tab_a_title_responsive.textContent = capitalizeFirstLetter(article["ArticleName"]);
+                _article_li_tab_a_title_responsive.href = "#";
+                _article_li_tab_responsive.appendChild(_article_li_tab_a_title_responsive);
+                // Append the tab to the homeSectionLeftSidebarTabs
+                homeSectionLeftSidebarTabsResponsive.appendChild(_article_li_tab_responsive);
                 // Set the corresponding image: <img>
                 let _article_img = document.createElement('img');
                 _article_img.classList.add('home-section-right-img');
@@ -168,6 +217,19 @@ function fetchArticles() {
             _article_li_tab.appendChild(_article_li_tab_a_title);
             // Append the skills tab to the homeSectionLeftSidebarTabs
             homeSectionLeftSidebarTabs.appendChild(_article_li_tab);
+            // Responsive
+            // Set the corresponding tab: <li>
+            let _article_li_tab_responsive = document.createElement('li');
+            _article_li_tab_responsive.classList.add('home-section-left-aside-sidebar-nav-ul-li-tab-responsive');
+            _article_li_tab_responsive.setAttribute('data-target-responsive', "article-skills");
+            _article_li_tab_responsive.setAttribute('data-image-responsive', "image-skills");
+            // Set and append the tab link: <a>
+            let _article_li_tab_a_title_responsive = document.createElement('a');
+            _article_li_tab_a_title_responsive.textContent = "Skills";
+            _article_li_tab_a_title_responsive.href = "#";
+            _article_li_tab_responsive.appendChild(_article_li_tab_a_title_responsive);
+            // Append the tab to the homeSectionLeftSidebarTabs
+            homeSectionLeftSidebarTabsResponsive.appendChild(_article_li_tab_responsive);
             // Set the skills image: <img>
             let _article_img = document.createElement('img');
             _article_img.classList.add('home-section-right-img');
@@ -195,6 +257,19 @@ function fetchArticles() {
             _article_li_tab.appendChild(_article_li_tab_a_title);
             // Append the education tab to the homeSectionLeftSidebarTabs
             homeSectionLeftSidebarTabs.appendChild(_article_li_tab);
+            // Responsive
+            // Set the corresponding tab: <li>
+            _article_li_tab_responsive = document.createElement('li');
+            _article_li_tab_responsive.classList.add('home-section-left-aside-sidebar-nav-ul-li-tab-responsive');
+            _article_li_tab_responsive.setAttribute('data-target-responsive', "article-education");
+            _article_li_tab_responsive.setAttribute('data-image-responsive', "image-education");
+            // Set and append the tab link: <a>
+            _article_li_tab_a_title_responsive = document.createElement('a');
+            _article_li_tab_a_title_responsive.textContent = "Education";
+            _article_li_tab_a_title_responsive.href = "#";
+            _article_li_tab_responsive.appendChild(_article_li_tab_a_title_responsive);
+            // Append the tab to the homeSectionLeftSidebarTabs
+            homeSectionLeftSidebarTabsResponsive.appendChild(_article_li_tab_responsive);
             // Set the education image: <img>
             _article_img = document.createElement('img');
             _article_img.classList.add('home-section-right-img');
@@ -232,6 +307,19 @@ function fetchArticles() {
             _article_li_tab.appendChild(_article_li_tab_a_title);
             // Append the contact tab to the homeSectionLeftSidebarTabs
             homeSectionLeftSidebarTabs.appendChild(_article_li_tab);
+            // Responsive
+            // Set the corresponding tab: <li>
+            _article_li_tab_responsive = document.createElement('li');
+            _article_li_tab_responsive.classList.add('home-section-left-aside-sidebar-nav-ul-li-tab-responsive');
+            _article_li_tab_responsive.setAttribute('data-target-responsive', "article-contact");
+            _article_li_tab_responsive.setAttribute('data-image-responsive', "image-contact");
+            // Set and append the tab link: <a>
+            _article_li_tab_a_title_responsive = document.createElement('a');
+            _article_li_tab_a_title_responsive.textContent = "Contact";
+            _article_li_tab_a_title_responsive.href = "#";
+            _article_li_tab_responsive.appendChild(_article_li_tab_a_title_responsive);
+            // Append the tab to the homeSectionLeftSidebarTabs
+            homeSectionLeftSidebarTabsResponsive.appendChild(_article_li_tab_responsive);
             // Set the contact image: <img>
             _article_img = document.createElement('img');
             _article_img.classList.add('home-section-right-img');
@@ -286,8 +374,12 @@ function fetchArticles() {
                     document.querySelector(`#${defaultImageId}`).style.opacity = '1';
                 }
             }, 50);
+            syncResponsiveTab();
+            syncNonResponsiveTab();
             // Add click event listeners to sidebar tabs
             const sideBarLiTabs = document.querySelectorAll(".home-section-left-aside-sidebar-nav-ul-li-tab");
+            // Add click event listeners to sidebar tabs (Responsive)
+            const sideBarLiTabsResponsive = document.querySelectorAll(".home-section-left-aside-sidebar-nav-ul-li-tab-responsive");
             // Add hover effect to sidebar tabs
             sideBarLiTabs.forEach(tab => {
                 tab.addEventListener('mouseenter', () => {
@@ -309,12 +401,16 @@ function fetchArticles() {
                     sessionStorage.setItem('selectedTab', tab.getAttribute('data-target'));
                     sideBarLiTabs.forEach(t => {
                         t.classList.remove("selected");
-                        // Animate the horizontal line of unselected tabs
-                        t.querySelector("hr").style.flexGrow = '0';
+                        setTimeout(() => {
+                            // Animate the horizontal line of unselected tabs
+                            t.querySelector("hr").style.flexGrow = '0';
+                        }, 30);  
                     });
                     tab.classList.add("selected");
-                    // Animate the horizontal line of the selected tab
-                    tab.querySelector("hr").style.flexGrow = '1';
+                    setTimeout(() => {
+                        // Animate the horizontal line of the selected tab
+                        tab.querySelector("hr").style.flexGrow = '1';
+                    }, 30);                  
                     const targetId = tab.getAttribute("data-target");
                     const targetImageId = tab.getAttribute("data-image");
                     const targetArticle = document.querySelector(`#${targetId}`);
@@ -348,6 +444,63 @@ function fetchArticles() {
                             targetImage.style.opacity = '1';
                         }
                     }, 30);
+                    sideBarLiTabsResponsive.forEach(t => t.classList.remove("selected"));
+                    const targetResponsiveTab = document.querySelector(`[data-target-responsive="${tab.getAttribute('data-target')}"]`);
+                    if (targetResponsiveTab) targetResponsiveTab.classList.add("selected");
+                    syncResponsiveTab();
+                });
+            });
+            // Click event to switch articles (Responsive)
+            sideBarLiTabsResponsive.forEach(tab => {
+                tab.addEventListener("click", (event) => {
+                    event.preventDefault(); // Prevent anchor behaviour of <a>
+                    // Save selected tab to session storage
+                    sessionStorage.setItem('selectedTab', tab.getAttribute('data-target-responsive'));
+                    sideBarLiTabsResponsive.forEach(t => {
+                        t.classList.remove("selected");
+                        setTimeout(() => {
+                            // Decrease the opacity of unselected tabs
+                            t.style.opacity = '0.5';
+                        }, 30);
+                    });
+                    tab.classList.add("selected");
+                    setTimeout(() => {
+                        // Increase the opacity of the selected tab
+                        tab.style.opacity = '1';
+                    }, 30);
+                    const targetId = tab.getAttribute("data-target-responsive");
+                    const targetImageId = tab.getAttribute("data-image-responsive");
+                    const targetArticle = document.querySelector(`#${targetId}`);
+                    const targetImage = document.querySelector(`#${targetImageId}`);
+                    if (!targetArticle) return; // Safety check
+                    if (targetId === "article-education") animateEducationItems();
+                    homeSectionLeftArticles.querySelectorAll("article").forEach(article => {
+                        article.style.display = "none";
+                        article.style.opacity = '0';
+                    });
+                    homeSectionRight.querySelectorAll("img").forEach(img => {
+                        img.style.display = "none";
+                        img.style.opacity = '0';
+                    });
+                    targetArticle.style.display = "block";
+                    // targetImage.style.display = "block";
+                    showImageResponsive(targetImage);
+                    if (targetId !== "article-education" && targetId !== "article-contact" && targetId !== "article-skills") {
+                        const typingElement = targetArticle.querySelector('.article-description');
+                        // typeText(typingElement, 20);
+                        // typingElement.setAttribute('data-fullhtml', typingElement.innerHTML);
+                        // typeHTML(typingElement, 5);
+                        runTypingOnce(typingElement, 5);
+                    }
+                    // Animate the opacity and image of the displayed article
+                    setTimeout(() => {
+                        targetArticle.style.opacity = '1';
+                        // targetImage.style.opacity = '1';
+                    }, 30);
+                    sideBarLiTabs.forEach(t => t.classList.remove("selected"));
+                    const targetRegularTab = document.querySelector(`[data-target="${tab.getAttribute('data-target-responsive')}"]`);
+                    if (targetRegularTab) targetRegularTab.classList.add("selected");
+                    syncNonResponsiveTab();
                 });
             });
             // Fetch and display education
@@ -472,6 +625,33 @@ function showImageResponsive(targetImage) {
         }, 30);
     }
 }
+function syncResponsiveTab() {
+    const savedTab = sessionStorage.getItem("selectedTab") || `article-about`;
+    const responsiveTabs = document.querySelectorAll('.home-section-left-aside-sidebar-nav-ul-li-tab-responsive');
+    responsiveTabs.forEach(tab => {
+        tab.classList.remove("selected");
+        tab.style.opacity = "0.5";
+    });
+    const selectedResponsive = document.querySelector(`[data-target-responsive="${savedTab}"]`);
+    if (selectedResponsive) {
+        selectedResponsive.classList.add("selected");
+        selectedResponsive.style.opacity = "1";
+    }
+}
+function syncNonResponsiveTab() {
+    const savedTab = sessionStorage.getItem("selectedTab") || `article-about`;
+    const desktopTabs = document.querySelectorAll('.home-section-left-aside-sidebar-nav-ul-li-tab');
+    desktopTabs.forEach(tab => {
+        tab.classList.remove("selected");
+        tab.querySelector("hr").style.flexGrow = '0';
+    });
+    const selectedDesktop = document.querySelector(`[data-target="${savedTab}"]`);
+    if (selectedDesktop) {
+        selectedDesktop.classList.add("selected");
+        selectedDesktop.querySelector("hr").style.flexGrow = '1';
+    }
+}
+
 // Run fetchArticles() after the entire page has fully loaded
 // window.onload = fetchArticles;
 // window.addEventListener("load", fetchArticles); // Handled at the top

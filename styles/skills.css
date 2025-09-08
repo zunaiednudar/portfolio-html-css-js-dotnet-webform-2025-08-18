@@ -6,11 +6,14 @@
 h2 {
     margin-left: 10px;
     margin-bottom: 10px;
+    font-size: var(--font-sz-lg);
+    color: var(--color-bg-primary);
 }
 
 hr {
     margin-left: 10px;
     margin-right: 10px;
+    border-color: var(--color-bg-primary);
 }
 
 .skills-container {
