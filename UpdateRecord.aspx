@@ -1,4 +1,4 @@
-﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="UpdateRecord.aspx.cs" Inherits="portfolio_html_css_js_dotnet_webform_2025_08_18.UpdateRecord" %>
+﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="UpdateRecord.aspx.cs" Inherits="portfolio_html_css_js_dotnet_webform_2025_08_18.UpdateRecord" ValidateRequest="false" %>
 <!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head runat="server">

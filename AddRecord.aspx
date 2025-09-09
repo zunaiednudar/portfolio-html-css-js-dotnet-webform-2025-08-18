@@ -1,4 +1,4 @@
-﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="AddRecord.aspx.cs" Inherits="portfolio_html_css_js_dotnet_webform_2025_08_18.AddRecord" %>
+﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="AddRecord.aspx.cs" Inherits="portfolio_html_css_js_dotnet_webform_2025_08_18.AddRecord" ValidateRequest="false" %>
 <!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head runat="server">

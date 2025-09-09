@@ -11,8 +11,6 @@ namespace portfolio_html_css_js_dotnet_webform_2025_08_18
     public partial class AdminPanel : System.Web.UI.Page
     {
         string connectionString = ConfigurationManager.ConnectionStrings["PortfolioDbConnection"].ConnectionString;
-
-        // Map table names to their primary key columns
         Dictionary<string, string> tablePKs = new Dictionary<string, string>()
         {
             { "PortfolioHomeSkillCategory", "CID" },
@@ -20,7 +18,6 @@ namespace portfolio_html_css_js_dotnet_webform_2025_08_18
             { "PortfolioBlogsItem", "BID" },
             { "PortfolioProjectsItem", "PID" }
         };
-
         protected void Page_Load(object sender, EventArgs e)
         {
             if (!IsPostBack)
@@ -28,7 +25,6 @@ namespace portfolio_html_css_js_dotnet_webform_2025_08_18
                 BindTables();
             }
         }
-
         private void BindTables()
         {
             DataTable tablesDT = new DataTable();
@@ -52,7 +48,6 @@ namespace portfolio_html_css_js_dotnet_webform_2025_08_18
                 }
             }
         }
-
         protected void rptTables_ItemDataBound(object sender, RepeaterItemEventArgs e)
         {
             if (e.Item.ItemType == ListItemType.Item || e.Item.ItemType == ListItemType.AlternatingItem)
@@ -60,13 +55,11 @@ namespace portfolio_html_css_js_dotnet_webform_2025_08_18
                 string tableName = DataBinder.Eval(e.Item.DataItem, "TABLE_NAME").ToString();
                 GridView gv = (GridView)e.Item.FindControl("gvTable");
                 Button btnAdd = (Button)e.Item.FindControl("btnAdd");
-
                 // Hide Add button if table is Contact
                 if (tableName.Equals("PortfolioHomeContact", StringComparison.OrdinalIgnoreCase))
                 {
                     btnAdd.Visible = false;
                 }
-
                 // Load table data as usual
                 DataTable dt = new DataTable();
                 using (SqlConnection con = new SqlConnection(connectionString))
@@ -74,12 +67,9 @@ namespace portfolio_html_css_js_dotnet_webform_2025_08_18
                     SqlDataAdapter da = new SqlDataAdapter($"SELECT * FROM {tableName}", con);
                     da.Fill(dt);
                 }
-
                 string pkColumn = tablePKs.ContainsKey(tableName) ? tablePKs[tableName] : dt.Columns[0].ColumnName;
                 gv.DataKeyNames = new string[] { pkColumn };
-
                 gv.Attributes["TableName"] = tableName;
-
                 gv.RowDataBound += (s, ev) =>
                 {
                     if (ev.Row.RowType == DataControlRowType.DataRow)
@@ -87,7 +77,6 @@ namespace portfolio_html_css_js_dotnet_webform_2025_08_18
                         LinkButton lnkUpdate = (LinkButton)ev.Row.FindControl("lnkUpdate");
                         LinkButton lnkDelete = (LinkButton)ev.Row.FindControl("lnkDelete");
                         string idValue = gv.DataKeys[ev.Row.RowIndex].Value.ToString();
-
                         // Hide Update button if table is Contact
                         if (tableName.Equals("PortfolioHomeContact", StringComparison.OrdinalIgnoreCase))
                         {
@@ -102,20 +91,15 @@ namespace portfolio_html_css_js_dotnet_webform_2025_08_18
                 gv.DataBind();
             }
         }
-
-
         protected void gvTable_RowCommand(object sender, GridViewCommandEventArgs e)
         {
             GridView gv = (GridView)sender;
-
             // Retrieve table name from the GridView attribute
             string tableName = gv.Attributes["TableName"];
             if (string.IsNullOrEmpty(tableName))
                 return; // safety check
-
             string pkColumn = tablePKs.ContainsKey(tableName) ? tablePKs[tableName] : gv.DataKeyNames[0];
             string id = e.CommandArgument.ToString();
-
             if (e.CommandName == "DeleteRow")
             {
                 DeleteRow(tableName, pkColumn, id);
@@ -125,7 +109,6 @@ namespace portfolio_html_css_js_dotnet_webform_2025_08_18
                 Response.Redirect($"UpdateRecord.aspx?table={tableName}&id={id}");
             }
         }
-
         private void DeleteRow(string tableName, string pkColumn, string id)
         {
             using (SqlConnection con = new SqlConnection(connectionString))
@@ -147,7 +130,6 @@ namespace portfolio_html_css_js_dotnet_webform_2025_08_18
                 }
             }
         }
-
         protected void btnAdd_Command(object sender, CommandEventArgs e)
         {
             string tableName = e.CommandArgument.ToString();
