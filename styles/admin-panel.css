@@ -1,0 +1,158 @@
+﻿body {
+    background-color: var(--color-bg-primary);
+    font-family: var(--font-stack), serif;
+    margin: 0;
+    padding: 0;
+}
+
+#adminPanel {
+    width: 90%;
+    margin: 30px auto;
+    padding: 30px;
+    display: flex;
+    flex-direction: column;
+    gap: 30px;
+    background-color: var(--color-bg-tertiary);
+    border: 5px solid var(--color-bg-quaternary);
+    border-radius: var(--radius);
+}
+
+    #adminPanel h2 {
+        width: 100%;
+        text-align: center;
+        font-size: 3.5em;
+        margin-bottom: 1.5rem;
+        color: var(--color-font);
+        border-bottom: 5px solid var(--color-bg-quaternary);
+        padding-bottom: 10px;
+    }
+
+    #adminPanel h2 > span.highlight {
+        color: var(--color-bg-quaternary);
+    }
+
+.table-section {
+    max-height: 720px;
+    background-color: var(--color-bg-quaternary);
+    padding: 20px;
+    border-radius: 10px;
+    overflow-x: auto;
+    overflow-y: auto;
+}
+
+    .table-section h3 {
+        text-align: center;
+        font-size: var(--font-sz-md);
+        font-weight: bold;
+        color: var(--color-font);
+        margin-bottom: 15px;
+    }
+
+.btn-add {
+    width: 100%;
+    display: block;
+    margin-bottom: 15px;
+    padding: 10px 20px;
+    font-family: var(--font-stack), serif;
+    font-size: var(--font-sz-sm);
+    font-weight: bold;
+    background-color: var(--color-bg-tertiary);
+    color: var(--color-bg-quaternary);
+    border: none;
+    border-radius: 10px;
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+    .btn-add:hover {
+        background-color: var(--color-bg-primary);
+        color: var(--color-font);
+    }
+
+.grid {
+    width: 100%;
+    max-width: 100%;
+    border-collapse: collapse;
+    margin-top: 10px;
+    table-layout: auto;
+    overflow-wrap: break-word;
+    border: 2px solid var(--color-bg-primary);
+}
+
+    .grid th, .grid td {
+        border: 2px solid var(--color-bg-primary);
+        padding: 10px;
+        font-size: var(--font-sz-sm);
+        color: var(--color-bg-primary);
+        word-wrap: break-word;
+        white-space: normal;
+        text-align: justify;
+        vertical-align: top;
+/*        max-width: 200px;*/
+    }
+
+    .grid th {
+        background-color: var(--color-bg-primary);
+        color: var(--color-bg-quaternary);
+        font-weight: bold;
+        text-align: left;
+    }
+
+    .grid td.action-cell {
+        width: 100%;
+        min-width: 250px;
+        display: flex;
+        flex-direction: row;
+        flex-wrap: wrap;
+        justify-content: space-between;
+        align-items: center;
+        border: none;
+    }
+
+    .grid tr:nth-child(even) {
+        background-color: var(--color-bg-tertiary);
+    }
+
+    .grid tr:hover {
+        background-color: var(--color-bg-secondary);
+        color: var(--color-font);
+    }
+
+    .grid a, .grid .lnkUpdate, .grid .lnkDelete {
+        font-weight: bold;
+        color: var(--color-bg-primary);
+        text-decoration: none;
+        cursor: pointer;
+        transition: color 0.3s ease;
+    }
+
+        .grid a:hover, .grid .lnkUpdate:hover, .grid .lnkDelete:hover {
+            color: var(--color-font);
+        }
+
+/* RESPONSIVE */
+
+@media (max-width: 1280px) {
+    form#form1 {
+        width: 95%;
+        padding: 20px;
+    }
+
+        form#form1 h2 {
+            font-size: 1.6rem;
+        }
+
+    .table-section h3 {
+        font-size: 1.3rem;
+    }
+
+    .btn-add {
+        font-size: 1rem;
+        padding: 8px 16px;
+    }
+
+    .grid th, .grid td {
+        font-size: 0.9rem;
+        padding: 8px;
+    }
+}

@@ -15,13 +15,13 @@ namespace portfolio_html_css_js_dotnet_webform_2025_08_18
     {
 
         /// <summary>
-        /// form1 control.
+        /// adminPanel control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlForm form1;
+        protected global::System.Web.UI.HtmlControls.HtmlForm adminPanel;
 
         /// <summary>
         /// rptTables control.
