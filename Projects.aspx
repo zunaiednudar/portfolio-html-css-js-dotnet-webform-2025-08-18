@@ -5,7 +5,7 @@
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="projects" runat="server">
     <section class="projects-section">
-        <!--Project 01-->
+        <!--
         <div class="project-card">
             <img src="images/ss-portfolio-resized.png" alt="Portfolio Website Screenshot" />
             <div>
@@ -20,7 +20,6 @@
                 <a href="https://github.com/yourusername/project1" target="_blank">GitHub</a>
             </div>
         </div>
-        <!--Project 02-->
         <div class="project-card">
             <img src="images/zunaied-01.jpg" alt="Portfolio Website Screenshot" />
             <div>
@@ -35,7 +34,6 @@
                 <a href="https://github.com/yourusername/project1" target="_blank">GitHub</a>
             </div>
         </div>
-        <!--Project 03-->
         <div class="project-card">
             <img src="images/zunaied-01.jpg" alt="Portfolio Website Screenshot" />
             <div>
@@ -50,7 +48,6 @@
                 <a href="https://github.com/yourusername/project1" target="_blank">GitHub</a>
             </div>
         </div>
-        <!--Project 04-->
         <div class="project-card">
             <img src="images/zunaied-01.jpg" alt="Portfolio Website Screenshot" />
 
@@ -66,5 +63,8 @@
                 <a href="https://github.com/yourusername/project1" target="_blank">GitHub</a>
             </div>
         </div>
+        -->
     </section>
+    <!--JavaScript-->
+    <script src="scripts/projects.js"></script>
 </asp:Content>

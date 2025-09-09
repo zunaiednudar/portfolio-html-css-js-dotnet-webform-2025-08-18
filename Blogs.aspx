@@ -5,7 +5,7 @@
 <asp:Content ID="Content2" ContentPlaceHolderID="blogs" runat="server">
     <section class="blogs-section">
         <ul class="blogs-section-ul">
-            <!--Blog 01-->
+            <!--
             <li class="blogs-section-ul-li">
                 <h3><a href="#" target="_blank">How I Built My Portfolio</a></h3>
                 <p>
@@ -14,7 +14,6 @@
                 </p>
                 <p><strong>Date:</strong> August 10, 2025</p>
             </li>
-            <!--Blog 02-->
             <li class="blogs-section-ul-li">
                 <h3><a href="#" target="_blank">How I Built My Portfolio</a></h3>
                 <p>
@@ -23,7 +22,6 @@
                 </p>
                 <p><strong>Date:</strong> August 10, 2025</p>
             </li>
-            <!--Blog 03-->
             <li class="blogs-section-ul-li">
                 <h3><a href="#" target="_blank">How I Built My Portfolio</a></h3>
                 <p>
@@ -32,6 +30,9 @@
                 </p>
                 <p><strong>Date:</strong> August 10, 2025</p>
             </li>
+            -->
         </ul>
     </section>
+    <!--JavaScript-->
+    <script src="scripts/blogs.js"></script>
 </asp:Content>

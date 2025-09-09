@@ -1,9 +1,10 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Configuration;
 using System.Data;
 using System.Data.SqlClient;
 using System.Web.Script.Serialization;
-using System.Configuration;
+using System.Web.Script.Services;
 using System.Web.Services;
 
 namespace portfolio_html_css_js_dotnet_webform_2025_08_18
@@ -58,6 +59,7 @@ namespace portfolio_html_css_js_dotnet_webform_2025_08_18
             return javaScriptSerializer.Serialize(rows);
         }
         [WebMethod]
+        [ScriptMethod(ResponseFormat = ResponseFormat.Json)]
         public static string GetEducation()
         {
             string connectionString = ConfigurationManager.ConnectionStrings["PortfolioDbConnection"].ConnectionString;
