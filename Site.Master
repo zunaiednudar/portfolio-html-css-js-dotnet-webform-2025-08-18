@@ -1,4 +1,5 @@
 ﻿<%@ Master Language="C#" AutoEventWireup="true" CodeBehind="Site.master.cs" Inherits="portfolio_html_css_js_dotnet_webform_2025_08_18.Site" %>
+
 <!DOCTYPE html>
 <html lang="en">
 <head runat="server">
@@ -64,6 +65,17 @@
                 <asp:ContentPlaceHolder ID="blogs" runat="server">
                 </asp:ContentPlaceHolder>
             </main>
+            <!-- Admin Login Modal -->
+            <div id="adminLoginModal" class="modal">
+                <div class="modal-content">
+                    <span class="close">&times;</span>
+                    <h2>Admin Login</h2>
+                    <asp:TextBox ID="txtAdminUsername" CssClass="modal-input" placeholder="Username" runat="server" />
+                    <asp:TextBox ID="txtAdminPassword" CssClass="modal-input" TextMode="Password" placeholder="Password" runat="server" />
+                    <asp:Button ID="btnAdminSubmit" Text="Login" CssClass="btn-login" OnClick="btnAdminSubmit_Click" runat="server" />
+                    <div id="loginError" class="login-error" runat="server"></div>
+                </div>
+            </div>
             <!--JavaScript-->
             <script src="scripts/site.js"></script>
             <!--Footer-->

@@ -106,6 +106,7 @@
     <Content Include="images\zunaied-01.jpg" />
     <Content Include="Projects.aspx" />
     <Content Include="scripts\add-record.js" />
+    <Content Include="scripts\admin-panel.js" />
     <Content Include="scripts\blogs.js" />
     <Content Include="scripts\contact.js" />
     <Content Include="scripts\home.js" />

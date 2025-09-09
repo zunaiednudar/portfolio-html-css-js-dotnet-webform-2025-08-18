@@ -18,11 +18,14 @@
 </head>
 <body>
     <form id="addRecordForm" runat="server">
+        <asp:LinkButton ID="btnBack" runat="server" CommandName="Back" OnCommand="btnBack_Command" CssClass="btn-back">
+            <i class="fas fa-arrow-left"></i>
+        </asp:LinkButton>
         <h2><asp:Label ID="lblTableName" runat="server" /></h2>
         <asp:Panel ID="pnlForm" runat="server"></asp:Panel>
         <asp:Button ID="btnAdd" runat="server" Text="Add" OnClick="btnAdd_Click" />
     </form>
 <!--JavaScript-->
-<script src="scripts/update-record.js"></script>
+<script src="scripts/add-record.js"></script>
 </body>
 </html>

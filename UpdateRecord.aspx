@@ -18,6 +18,9 @@
 </head>
 <body>
     <form id="updateRecord" runat="server">
+        <asp:LinkButton ID="btnBack" runat="server" CommandName="Back" OnCommand="btnBack_Command" CssClass="btn-back">
+            <i class="fas fa-arrow-left"></i>
+        </asp:LinkButton>
         <h2><asp:Label ID="lblTableName" runat="server" /></h2>
         <asp:Panel ID="pnlForm" runat="server"></asp:Panel>
         <asp:Button ID="btnUpdate" runat="server" Text="Update" OnClick="btnUpdate_Click" />
