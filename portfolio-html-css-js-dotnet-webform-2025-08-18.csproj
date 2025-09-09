@@ -75,6 +75,7 @@
     <Content Include="images\cs.png" />
     <Content Include="images\css.png" />
     <Content Include="images\dotnet.png" />
+    <Content Include="images\firebase.jpg" />
     <Content Include="images\github.png" />
     <Content Include="images\html.png" />
     <Content Include="images\icons8-close-100.png" />

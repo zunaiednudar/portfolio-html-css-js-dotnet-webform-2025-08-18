@@ -21,15 +21,26 @@ function fetchBlogs() {
                 itemA.href = blog.BLink;
                 itemA.target = '_blank';
                 let itemTitle = document.createElement("h3");
+                itemTitle.classList.add("blog-title");
                 itemTitle.textContent = blog.BTitle;
                 let itemDescription = document.createElement("p");
-                itemDescription.textContent = blog.BDescription;
+                itemDescription.classList.add("blog-description");
+                let text = blog.BDescription || "";
+                // Replace tabs with 4 spaces
+                text = text.replace(/\t/g, "&nbsp;&nbsp;&nbsp;&nbsp;");
+                // Replace newlines with <br>
+                text = text.replace(/\n/g, "<br>");
+                itemDescription.innerHTML = text;
                 itemA.appendChild(itemTitle);
                 itemA.appendChild(itemDescription);
                 if (blog.BDate !== null) {
                     let itemDate = document.createElement("strong");
+                    itemDate.classList.add("blog-date");
                     itemDate.textContent = blog.BDate;
-                    itemA.appendChild(document.createElement("p").appendChild(itemDate));
+                    let itemDateContainer = document.createElement("p");
+                    itemDateContainer.classList.add("blog-date-container");
+                    itemDateContainer.appendChild(itemDate);
+                    itemA.appendChild(itemDateContainer);
                 }
                 item.appendChild(itemA);
                 blogsSectionUl.appendChild(item);
