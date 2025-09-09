@@ -59,10 +59,15 @@ namespace portfolio_html_css_js_dotnet_webform_2025_08_18
             {
                 string tableName = DataBinder.Eval(e.Item.DataItem, "TABLE_NAME").ToString();
                 GridView gv = (GridView)e.Item.FindControl("gvTable");
+                Button btnAdd = (Button)e.Item.FindControl("btnAdd");
 
-                // Store table name in GridView attribute for postback
-                gv.Attributes["TableName"] = tableName;
+                // Hide Add button if table is Contact
+                if (tableName.Equals("PortfolioHomeContact", StringComparison.OrdinalIgnoreCase))
+                {
+                    btnAdd.Visible = false;
+                }
 
+                // Load table data as usual
                 DataTable dt = new DataTable();
                 using (SqlConnection con = new SqlConnection(connectionString))
                 {
@@ -70,13 +75,11 @@ namespace portfolio_html_css_js_dotnet_webform_2025_08_18
                     da.Fill(dt);
                 }
 
-                // Determine the correct primary key for this table
                 string pkColumn = tablePKs.ContainsKey(tableName) ? tablePKs[tableName] : dt.Columns[0].ColumnName;
-
                 gv.DataKeyNames = new string[] { pkColumn };
-                gv.DataSource = dt;
 
-                // Set CommandArgument for Update/Delete buttons dynamically
+                gv.Attributes["TableName"] = tableName;
+
                 gv.RowDataBound += (s, ev) =>
                 {
                     if (ev.Row.RowType == DataControlRowType.DataRow)
@@ -84,14 +87,22 @@ namespace portfolio_html_css_js_dotnet_webform_2025_08_18
                         LinkButton lnkUpdate = (LinkButton)ev.Row.FindControl("lnkUpdate");
                         LinkButton lnkDelete = (LinkButton)ev.Row.FindControl("lnkDelete");
                         string idValue = gv.DataKeys[ev.Row.RowIndex].Value.ToString();
+
+                        // Hide Update button if table is Contact
+                        if (tableName.Equals("PortfolioHomeContact", StringComparison.OrdinalIgnoreCase))
+                        {
+                            if (lnkUpdate != null) lnkUpdate.Visible = false;
+                        }
                         if (lnkUpdate != null) lnkUpdate.CommandArgument = idValue;
                         if (lnkDelete != null) lnkDelete.CommandArgument = idValue;
                     }
                 };
 
+                gv.DataSource = dt;
                 gv.DataBind();
             }
         }
+
 
         protected void gvTable_RowCommand(object sender, GridViewCommandEventArgs e)
         {

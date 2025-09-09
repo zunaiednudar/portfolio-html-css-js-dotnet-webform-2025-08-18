@@ -67,6 +67,7 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Content Include="AddRecord.aspx" />
     <Content Include="AdminPanel.aspx" />
     <Content Include="Blogs.aspx" />
     <Content Include="Contact.aspx" />
@@ -110,6 +111,7 @@
     <Content Include="scripts\projects.js" />
     <Content Include="scripts\site.js" />
     <Content Include="scripts\skills.js" />
+    <Content Include="scripts\update-record.js" />
     <Content Include="Skills.aspx" />
     <Content Include="styles\blogs.css" />
     <Content Include="styles\contact.css" />
@@ -117,9 +119,18 @@
     <Content Include="styles\projects.css" />
     <Content Include="styles\site.css" />
     <Content Include="styles\skills.css" />
+    <Content Include="styles\update-record.css" />
+    <Content Include="UpdateRecord.aspx" />
     <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="AddRecord.aspx.cs">
+      <DependentUpon>AddRecord.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="AddRecord.aspx.designer.cs">
+      <DependentUpon>AddRecord.aspx</DependentUpon>
+    </Compile>
     <Compile Include="AdminPanel.aspx.cs">
       <DependentUpon>AdminPanel.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -168,6 +179,13 @@
     </Compile>
     <Compile Include="Skills.aspx.designer.cs">
       <DependentUpon>Skills.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="UpdateRecord.aspx.cs">
+      <DependentUpon>UpdateRecord.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="UpdateRecord.aspx.designer.cs">
+      <DependentUpon>UpdateRecord.aspx</DependentUpon>
     </Compile>
   </ItemGroup>
   <ItemGroup>
