@@ -24,8 +24,10 @@
                             <asp:Repeater ID="rptSkills" runat="server" OnItemDataBound="rptSkills_ItemDataBound">
                                 <ItemTemplate>
                                     <div class="skill">
-                                        <img src='<%# Eval("ImagePath") %>' />
-                                        <!--<span><%# Eval("SkillName") %></span>-->
+                                        <div class="tooltip">
+                                            <img src='<%# Eval("ImagePath") %>' />
+                                            <span class="tooltip-text"><%# Eval("SkillName") %></span>
+                                        </div>
                                         <div class="skill-proficiency">
                                             <div id="skillBar" runat="server" class="skill-bar"></div>
                                         </div>
