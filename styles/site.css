@@ -94,10 +94,38 @@
     margin-bottom: 2rem;
 }
 
-.site-form-div-header-h1-name {
+.site-form-div-header-container {
+    height: 30px;
+    width: 100%;
     margin-bottom: 2rem;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.site-form-div-header-h1-name {
     cursor: default;
 }
+
+.icon-admin {
+    height: 100%;
+    padding: 5px;
+    margin-right: 10px;
+    background-color: var(--color-font);
+    border-radius: 50%;
+    cursor: pointer;
+    transition: background-color 0.5s ease;
+}
+
+    .icon-admin:hover {
+        background-color: var(--color-bg-tertiary);
+    }
+
+    .icon-admin:focus {
+        background-color: var(--color-bg-quaternary);
+    }
 
 .site-form-div-header-nav {
     display: flex;

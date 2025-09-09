@@ -40,7 +40,11 @@ window.addEventListener('load', () => {
         sessionStorage.setItem('nameAnimated', 'true');
     }
 });
-
+// Admin panel button
+const adminIcon = document.querySelector(".icon-admin");
+adminIcon.addEventListener("click", () => {
+    window.location.href = 'AdminPanel.aspx';
+});
 document.addEventListener("DOMContentLoaded", () => {
     let sunIcon = document.querySelector('.site-form-div-header-nav-button-toggle-view-mode .fa-sun');
     let moonIcon = document.querySelector('.site-form-div-header-nav-button-toggle-view-mode .fa-moon');

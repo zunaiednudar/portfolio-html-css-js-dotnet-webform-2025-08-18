@@ -1,0 +1,149 @@
+﻿body {
+    background-color: var(--color-bg-primary);
+    font-family: var(--font-stack), serif;
+}
+
+#addRecordForm {
+    width: 80%;
+    margin: 40px auto;
+    padding: 30px;
+    display: flex;
+    flex-direction: column;
+    flex-wrap: nowrap;
+    justify-content: space-between;
+    align-items: center;
+    background-color: var(--color-bg-tertiary);
+    border: 5px solid var(--color-bg-quaternary);
+    border-radius: var(--radius);
+}
+
+    #addRecordForm h2 {
+        width: 100%;
+        text-align: center;
+        font-size: var(--font-sz-lg);
+        margin-bottom: 1.5rem;
+        color: var(--color-bg-quaternary);
+        border-bottom: 5px solid var(--color-bg-quaternary);
+    }
+
+.highlight-table-name {
+    color: var(--color-font);
+    font-weight: bold;
+}
+
+#litTableName {
+    text-align: center;
+    font-size: var(--font-sz-md);
+    font-weight: 600;
+    margin-bottom: 2rem;
+    color: var(--color-font);
+}
+
+#pnlForm {
+    width: 100%;
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    background-color: var(--color-bg-quaternary);
+    border-radius: 10px;
+}
+
+.form-row {
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    align-items: center;
+}
+
+    .form-row:focus-within .form-label {
+        color: var(--color-font);
+        font-weight: bold;
+    }
+
+.form-label {
+    font-size: var(--font-sz-sm);
+    font-weight: bold;
+    color: var(--color-bg-primary);
+}
+
+.auto-resize {
+    min-height: 50px;
+    overflow-y: hidden;
+    resize: none;
+}
+
+#pnlForm input[type="text"],
+#pnlForm input[type="number"],
+#pnlForm input[type="email"],
+#pnlForm textarea {
+    min-width: 80%;
+    padding: 12px;
+    font-family: var(--font-stack), serif;
+    font-size: var(--font-sz-sm);
+    font-weight: bold;
+    color: var(--color-bg-quaternary);
+    border: 3px solid var(--color-bg-tertiary);
+    border-radius: 10px;
+    background-color: var(--color-bg-primary);
+    transition: border-color 0.3s ease;
+    resize: vertical;
+}
+
+    #pnlForm input:focus,
+    #pnlForm textarea:focus {
+        border-color: var(--color-font-2);
+        box-shadow: 0 0 8px var(--color-bg-quaternary);
+        outline: none;
+    }
+
+#btnAdd {
+    display: block;
+    width: 80%;
+    margin: 30px auto 0;
+    padding: 12px 24px;
+    background-color: var(--color-bg-quaternary);
+    color: var(--color-bg-primary);
+    font-family: var(--font-stack), serif;
+    font-size: var(--font-sz-sm);
+    font-weight: bold;
+    border: none;
+    border-radius: 10px;
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+    #btnAdd:hover {
+        background-color: var(--color-bg-secondary);
+        color: var(--color-font);
+    }
+
+/*RESPONSIVE*/
+
+@media (max-width: 1280px) {
+    #addRecordForm {
+        width: 95%;
+        padding: 20px;
+    }
+
+        #addRecordForm h2 {
+            font-size: 1.6rem;
+        }
+
+    #litTableName {
+        font-size: 1.4rem;
+        margin-bottom: 1.5rem;
+    }
+
+    #btnAdd {
+        font-size: 1rem;
+        padding: 10px 20px;
+    }
+
+    #pnlForm input,
+    #pnlForm textarea {
+        width: 100%;
+    }
+}
