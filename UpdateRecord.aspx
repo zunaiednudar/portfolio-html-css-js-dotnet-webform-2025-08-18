@@ -22,7 +22,7 @@
         <asp:Panel ID="pnlForm" runat="server"></asp:Panel>
         <asp:Button ID="btnUpdate" runat="server" Text="Update" OnClick="btnUpdate_Click" />
     </form>
-</body>
 <!--JavaScript-->
 <script src="scripts/update-record.js"></script>
+</body>
 </html>

@@ -22,17 +22,7 @@
         <asp:Panel ID="pnlForm" runat="server"></asp:Panel>
         <asp:Button ID="btnAdd" runat="server" Text="Add" OnClick="btnAdd_Click" />
     </form>
-    <script>
-        document.addEventListener("DOMContentLoaded", function () {
-            const textareas = document.querySelectorAll(".auto-resize");
-            textareas.forEach(textarea => {
-                textarea.style.height = textarea.scrollHeight + "px";
-                textarea.addEventListener("input", function () {
-                    this.style.height = "auto";
-                    this.style.height = this.scrollHeight + "px";
-                });
-            });
-        });
-    </script>
+<!--JavaScript-->
+<script src="scripts/update-record.js"></script>
 </body>
 </html>

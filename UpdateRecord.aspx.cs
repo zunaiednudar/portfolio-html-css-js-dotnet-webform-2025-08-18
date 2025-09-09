@@ -27,8 +27,8 @@ namespace portfolio_html_css_js_dotnet_webform_2025_08_18
             recordId = Request.QueryString["id"];
             if (string.IsNullOrEmpty(tableName) || string.IsNullOrEmpty(recordId))
             {
-                Response.Write("Invalid table or record ID.");
-                Response.End();
+                ClientScript.RegisterStartupScript(this.GetType(), "alert", "alert('Invalid table or record ID.');", true);
+                return;
             }
             pkColumn = tablePKs.ContainsKey(tableName) ? tablePKs[tableName] : "ID";
             lblTableName.Text = $"Update <span class='highlight-table-name'>{tableName}</span>";
@@ -39,7 +39,7 @@ namespace portfolio_html_css_js_dotnet_webform_2025_08_18
             DataTable dt = new DataTable();
             using (SqlConnection con = new SqlConnection(connectionString))
             {
-                string query = $"SELECT * FROM {tableName} WHERE {pkColumn}=@id";
+                string query = $"SELECT * FROM [{tableName}] WHERE [{pkColumn}]=@id";
                 using (SqlCommand cmd = new SqlCommand(query, con))
                 {
                     cmd.Parameters.AddWithValue("@id", recordId);
@@ -78,6 +78,7 @@ namespace portfolio_html_css_js_dotnet_webform_2025_08_18
             List<string> setClauses = new List<string>();
             SqlCommand cmd = new SqlCommand();
             cmd.Connection = new SqlConnection(connectionString);
+            string newPkValue = null;
             void AddTextBoxParameters(Control parent)
             {
                 foreach (Control ctrl in parent.Controls)
@@ -87,6 +88,9 @@ namespace portfolio_html_css_js_dotnet_webform_2025_08_18
                         string colName = txt.ID.Replace("txt_", "");
                         setClauses.Add($"[{colName}]=@{colName}");
                         cmd.Parameters.AddWithValue("@" + colName, txt.Text ?? "");
+
+                        if (colName == pkColumn)
+                            newPkValue = txt.Text;
                     }
                     else if (ctrl.HasControls())
                     {
@@ -97,8 +101,25 @@ namespace portfolio_html_css_js_dotnet_webform_2025_08_18
             AddTextBoxParameters(pnlForm);
             if (setClauses.Count == 0)
             {
-                Response.Write("Nothing to update!");
+                ClientScript.RegisterStartupScript(this.GetType(), "alert", "alert('Nothing to update!');", true);
                 return;
+            }
+            // Check if PK value already exists (but not the current record)
+            if (!string.IsNullOrEmpty(pkColumn) && !string.IsNullOrEmpty(newPkValue) && newPkValue != recordId)
+            {
+                using (SqlConnection conCheck = new SqlConnection(connectionString))
+                using (SqlCommand checkCmd = new SqlCommand($"SELECT COUNT(1) FROM [{tableName}] WHERE [{pkColumn}]=@pkValue AND [{pkColumn}]<>@currentId", conCheck))
+                {
+                    checkCmd.Parameters.AddWithValue("@pkValue", newPkValue);
+                    checkCmd.Parameters.AddWithValue("@currentId", recordId);
+                    conCheck.Open();
+                    int exists = (int)checkCmd.ExecuteScalar();
+                    if (exists > 0)
+                    {
+                        ClientScript.RegisterStartupScript(this.GetType(), "alert", $"alert('A record with {pkColumn}={newPkValue} already exists!');", true);
+                        return;
+                    }
+                }
             }
             string setClause = string.Join(", ", setClauses);
             cmd.CommandText = $"UPDATE [{tableName}] SET {setClause} WHERE [{pkColumn}]=@id";
@@ -108,13 +129,13 @@ namespace portfolio_html_css_js_dotnet_webform_2025_08_18
                 cmd.Connection.Open();
                 int rows = cmd.ExecuteNonQuery();
                 if (rows > 0)
-                    Response.Write("<script>alert('Record updated successfully');window.location='AdminPanel.aspx';</script>");
+                    ClientScript.RegisterStartupScript(this.GetType(), "alert", "alert('Record updated successfully');window.location='AdminPanel.aspx';", true);
                 else
-                    Response.Write("<script>alert('No record was updated.');</script>");
+                    ClientScript.RegisterStartupScript(this.GetType(), "alert", "alert('No record was updated.');", true);
             }
             catch (Exception ex)
             {
-                Response.Write($"Error: {ex.Message}");
+                ClientScript.RegisterStartupScript(this.GetType(), "alert", $"alert('Error: {ex.Message}');", true);
             }
             finally
             {

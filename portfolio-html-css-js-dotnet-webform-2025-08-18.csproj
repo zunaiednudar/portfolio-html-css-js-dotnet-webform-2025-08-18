@@ -105,6 +105,7 @@
     <Content Include="images\ss-portfolio.png" />
     <Content Include="images\zunaied-01.jpg" />
     <Content Include="Projects.aspx" />
+    <Content Include="scripts\add-record.js" />
     <Content Include="scripts\blogs.js" />
     <Content Include="scripts\contact.js" />
     <Content Include="scripts\home.js" />
@@ -113,6 +114,7 @@
     <Content Include="scripts\skills.js" />
     <Content Include="scripts\update-record.js" />
     <Content Include="Skills.aspx" />
+    <Content Include="styles\add-record.css" />
     <Content Include="styles\blogs.css" />
     <Content Include="styles\contact.css" />
     <Content Include="styles\home.css" />
