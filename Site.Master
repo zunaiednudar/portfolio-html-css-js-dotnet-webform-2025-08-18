@@ -24,7 +24,10 @@
         <div class="site-form-div">
             <!--Header-->
             <header class="site-form-div-header">
-                <h1 class="site-form-div-header-h1-name">Md. Zunaied Nudar</h1>
+                <div class="site-form-div-header-container">
+                    <h1 class="site-form-div-header-h1-name">Md. Zunaied Nudar</h1>
+                    <img class="icon-admin" src="images/icons8-admin-100.png" alt="admin" />
+                </div>
                 <nav class="site-form-div-header-nav">
                     <ul class="site-form-div-header-nav-ul">
                         <li class="site-form-div-header-nav-ul-li <%# Page.Title == "Home" ? "active" : "" %>"><a href="Home.aspx">Home</a></li>
