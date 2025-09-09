@@ -135,5 +135,9 @@ namespace portfolio_html_css_js_dotnet_webform_2025_08_18
             string tableName = e.CommandArgument.ToString();
             Response.Redirect($"AddRecord.aspx?table={tableName}");
         }
+        protected void btnBack_Command(object sender, CommandEventArgs e)
+        {
+            Response.Redirect($"Home.aspx");
+        }
     }
 }

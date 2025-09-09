@@ -19,6 +19,9 @@
 </head>
 <body>
     <form id="adminPanel" runat="server">
+        <asp:LinkButton ID="LinkButton1" runat="server" CommandName="Back" OnCommand="btnBack_Command" CssClass="btn-back">
+            <i class="fas fa-arrow-left"></i>
+        </asp:LinkButton>
         <h2>Welcome, <span class="highlight">Zunaied!</span></h2>
         <asp:Repeater ID="rptTables" runat="server" OnItemDataBound="rptTables_ItemDataBound">
             <ItemTemplate>
@@ -52,5 +55,7 @@
             </ItemTemplate>
         </asp:Repeater>
     </form>
+    <!--JavaScript-->
+    <script src="scripts/admin-panel.js"></script>
 </body>
 </html>

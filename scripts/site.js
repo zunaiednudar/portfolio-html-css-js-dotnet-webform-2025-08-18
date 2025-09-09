@@ -42,9 +42,9 @@ window.addEventListener('load', () => {
 });
 // Admin panel button
 const adminIcon = document.querySelector(".icon-admin");
-adminIcon.addEventListener("click", () => {
-    window.location.href = 'AdminPanel.aspx';
-});
+// adminIcon.addEventListener("click", () => {
+//     window.location.href = 'AdminPanel.aspx';
+// });
 document.addEventListener("DOMContentLoaded", () => {
     let sunIcon = document.querySelector('.site-form-div-header-nav-button-toggle-view-mode .fa-sun');
     let moonIcon = document.querySelector('.site-form-div-header-nav-button-toggle-view-mode .fa-moon');
@@ -58,6 +58,8 @@ document.addEventListener("DOMContentLoaded", () => {
         // Send signal message to iframe (Skills.aspx)
         if (!iframeSkills) return;
         iframeSkills.contentWindow.postMessage("themeChanged", window.location.origin);
+        // Notify AdminPanel.aspx
+        applyThemeFromCookie();
     }
     function setCookie(name, value, days) {
         let expires = "";
@@ -114,3 +116,14 @@ document.addEventListener("DOMContentLoaded", () => {
         updateThemeIcon();
     });
 });
+// Modal Operation
+document.addEventListener('DOMContentLoaded', function() {
+    const modal = document.getElementById('adminLoginModal');
+    const spanClose = modal.querySelector('.close');
+    adminIcon.onclick = function() { modal.style.display = 'block'; }
+    spanClose.onclick = function() { modal.style.display = 'none'; }
+    window.onclick = function(event) {
+        if (event.target === modal) { modal.style.display = 'none'; }
+    }
+});
+

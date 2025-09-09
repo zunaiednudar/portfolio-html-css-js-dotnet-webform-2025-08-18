@@ -3,6 +3,28 @@
     font-family: var(--font-stack), serif;
 }
 
+.btn-back {
+    width: 60px;
+    display: block;
+    align-self: flex-start;
+    margin-bottom: 15px;
+    padding: 10px 20px;
+    font-family: var(--font-stack), serif;
+    font-size: var(--font-sz-sm);
+    font-weight: bold;
+    background-color: var(--color-bg-quaternary);
+    color: var(--color-bg-primary);
+    border: none;
+    border-radius: 10px;
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+    .btn-back:hover {
+        background-color: var(--color-bg-primary);
+        color: var(--color-font);
+    }
+
 #addRecordForm {
     width: 80%;
     margin: 40px auto;
@@ -22,8 +44,8 @@
         text-align: center;
         font-size: var(--font-sz-lg);
         margin-bottom: 1.5rem;
-        color: var(--color-bg-quaternary);
-        border-bottom: 5px solid var(--color-bg-quaternary);
+        color: var(--color-bg-primary);
+        border-bottom: 5px solid var(--color-bg-primary);
     }
 
 .highlight-table-name {
@@ -116,7 +138,7 @@
 }
 
     #btnAdd:hover {
-        background-color: var(--color-bg-secondary);
+        background-color: var(--color-bg-primary);
         color: var(--color-font);
     }
 

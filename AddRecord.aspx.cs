@@ -138,5 +138,9 @@ namespace portfolio_html_css_js_dotnet_webform_2025_08_18
                 cmd.Connection.Close();
             }
         }
+        protected void btnBack_Command(object sender, CommandEventArgs e)
+        {
+            Response.Redirect($"AdminPanel.aspx");
+        }
     }
 }
