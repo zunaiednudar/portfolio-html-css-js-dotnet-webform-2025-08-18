@@ -95,17 +95,19 @@
 }
 
 .site-form-div-header-container {
-    height: 30px;
+    height: 50px;
     width: 100%;
     margin-bottom: 2rem;
     display: flex;
     flex-direction: row;
     flex-wrap: wrap;
     justify-content: space-between;
-    align-items: center;
+    align-items: flex-start;
 }
 
 .site-form-div-header-h1-name {
+    max-width: 70%;
+    text-align: left;
     cursor: default;
 }
 
@@ -113,14 +115,15 @@
     height: 100%;
     padding: 5px;
     margin-right: 10px;
-    background-color: var(--color-bg-tertiary);
+    background-color: var(--color-bg-primary);
     border-radius: 50%;
     cursor: pointer;
     transition: background-color 0.5s ease;
+/*    border: 1px solid black;*/
 }
 
     .icon-admin:hover {
-        background-color: var(--color-bg-primary);
+        background-color: var(--color-bg-tertiary);
     }
 
     .icon-admin:focus {
