@@ -18,6 +18,7 @@
 </head>
 <body>
     <form id="addRecordForm" runat="server">
+        <asp:ScriptManager ID="ScriptManager1" runat="server" />
         <asp:LinkButton ID="btnBack" runat="server" CommandName="Back" OnCommand="btnBack_Command" CssClass="btn-back">
             <i class="fas fa-arrow-left"></i>
         </asp:LinkButton>

@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Configuration;
 using System.Data;
 using System.Data.SqlClient;
+using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
 
@@ -73,6 +74,21 @@ namespace portfolio_html_css_js_dotnet_webform_2025_08_18
                 ClientScript.RegisterStartupScript(this.GetType(), "alert", "alert('Invalid table name.');", true);
                 return;
             }
+            // Restrict PortfolioHomeArticles to max 6 rows
+            if (tableName == "PortfolioHomeArticles")
+            {
+                using (SqlConnection conCheck = new SqlConnection(connectionString))
+                using (SqlCommand checkCmd = new SqlCommand($"SELECT COUNT(*) FROM [{tableName}]", conCheck))
+                {
+                    conCheck.Open();
+                    int totalRows = (int)checkCmd.ExecuteScalar();
+                    if (totalRows >= 6) // Extra 3 articles "Skills", "Education", "Contact", which are not included in the database takes space -> Total articles = 9
+                    {
+                        ClientScript.RegisterStartupScript(this.GetType(), "alert", "alert('You cannot insert more than 6 articles in PortfolioHomeArticles.');", true);
+                        return;
+                    }
+                }
+            }
             List<string> columns = new List<string>();
             List<string> parameters = new List<string>();
             SqlCommand cmd = new SqlCommand();
@@ -114,7 +130,18 @@ namespace portfolio_html_css_js_dotnet_webform_2025_08_18
                     int exists = (int)checkCmd.ExecuteScalar();
                     if (exists > 0)
                     {
-                        ClientScript.RegisterStartupScript(this.GetType(), "alert", $"alert('A record with {pkColumn}={pkValue} already exists!');", true);
+                        // Use ScriptManager and this reference
+                        if (ScriptManager.GetCurrent(this.Page) != null)
+                        {
+                            ScriptManager.RegisterStartupScript(this.Page, this.Page.GetType(), "dupAlert",
+                                $"alert('A record with {pkColumn}={pkValue} already exists!');", true);
+                        }
+                        else
+                        {
+                            // fallback if no ScriptManager
+                            ClientScript.RegisterStartupScript(this.GetType(), "dupAlert",
+                                $"alert('A record with {pkColumn}={pkValue} already exists!');", true);
+                        }
                         return;
                     }
                 }
@@ -127,11 +154,15 @@ namespace portfolio_html_css_js_dotnet_webform_2025_08_18
             {
                 cmd.Connection.Open();
                 cmd.ExecuteNonQuery();
-                ClientScript.RegisterStartupScript(this.GetType(), "alert", "alert('Record added successfully');window.location='AdminPanel.aspx';", true);
+                ClientScript.RegisterStartupScript(this.GetType(), "alert",
+                    "alert('Record added successfully'); window.location='AdminPanel.aspx';", true);
+
             }
             catch (Exception ex)
             {
-                ClientScript.RegisterStartupScript(this.GetType(), "alert", $"alert('Error: {ex.Message}');", true);
+                string safeMessage = HttpUtility.JavaScriptStringEncode(ex.Message);
+                ClientScript.RegisterStartupScript(this.GetType(), "alert",
+                    $"alert('{safeMessage}');", true);
             }
             finally
             {
