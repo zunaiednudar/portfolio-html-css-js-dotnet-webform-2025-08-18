@@ -30,7 +30,8 @@ namespace portfolio_html_css_js_dotnet_webform_2025_08_18
             DataTable tablesDT = new DataTable();
             using (SqlConnection con = new SqlConnection(connectionString))
             {
-                string query = "SELECT TABLE_NAME FROM INFORMATION_SCHEMA.TABLES WHERE TABLE_TYPE='BASE TABLE' AND TABLE_CATALOG='PortfolioDb'";
+                // string query = "SELECT TABLE_NAME FROM INFORMATION_SCHEMA.TABLES WHERE TABLE_TYPE='BASE TABLE' AND TABLE_CATALOG='PortfolioDb'";
+                string query = "SELECT TABLE_NAME FROM INFORMATION_SCHEMA.TABLES WHERE TABLE_TYPE='BASE TABLE'";
                 using (SqlCommand cmd = new SqlCommand(query, con))
                 {
                     SqlDataAdapter da = new SqlDataAdapter(cmd);
